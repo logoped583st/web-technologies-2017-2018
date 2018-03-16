@@ -101,7 +101,7 @@ hr{
     color: #FFB300;
     height:1px;
     border: none;
-    width: 926px;
+    max-width: 926px;
     background-color:#FFB300; 
 }
 
@@ -122,6 +122,9 @@ header {
     margin: auto;
 }
 
+.navigation ul{
+    width: 100%;
+}
 .navigation ul li {
     display: flex;
     justify-content: center;
@@ -140,48 +143,39 @@ header {
 }
 
 .navigation ul li.logo {
-    display: flex;
     width: 50px;
     padding: 0;
 }
 
 .greenHelp {
-    display: flex;
     background-color: #008375;
 }
 
 .yellowBlog {
-    display: flex;
     background-color: #FFB300;
 }
 
 .redDownloads {
-    display: flex;
     background-color: #C61931;
 }
 
 .purpleComm {
-    display: flex;
     background-color: #71456C;
 }
 
 .orangeFor {
-    display: flex;
     background-color: #FD4F57;
 }
 
 .blueEduc {
-    display: flex;
     background-color: #328AAB;
 }
 .mainContent{
     display: flex;
     flex-direction: row;
-    margin: auto;
-    padding-top: 50px;
+    justify-content: center;
 }
 .raspberryBuy{
-    display: flex;
     margin-top: 10px;
     float: right;
     width: 196px;
@@ -189,29 +183,33 @@ header {
 }
 
 .first{
-    float: left;
     display: flex;
-
-    position: relative;
-    flex-direction: column;
-    background-color: #64A4BD;
     width: 216px;
     height: 360px;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #64A4BD;
     margin-top: 30px;
 }
 
 .second{
-    float: left;
-    position: relative;
+    display: flex;
     width: 688px;
     height: 360px;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: center;
     padding-left: 20px;
     margin-top: 30px;
 }
+
 .textMargin{
     padding: 20px 0 0 20px;
 }
+
 .blackButton{
+    display: flex;
+    align-self: center;
     background-color: #000000;
     border: none;
     color: #FFFFFF;
@@ -219,49 +217,45 @@ header {
     font-weight: 400;
     text-align: center;
     line-height: 3;
-    width: calc(100% - 40px);
-    margin: 20px 20px 0 20px;
 }
+
 .Button2{
-    float: right;
+    display: flex;
     background-color: #64A4BD;
     border: none;
-    position: relative;
+    align-self:flex-end;
     margin: -70px 15px 0 0;
     color: #FFFFFF;
     font-size: 15px;
     font-weight: 400;
-    text-align: center;
     line-height: 3;
 }
+
 .FromBlog{
+    padding: 50px 50px 0 50px;
     display: flex;
-    width: 924px;
-    padding-top: 50px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column
+    flex-direction: column;
 }
+
 .ImagesBlog{
-    width: 924px;
-    margin: auto;
     display: flex;
-    justify-content: space-between;
-    flex-direction: row;
+    justify-content: center;
 }
+
 .BlogSize{
-    width: 216px;
+    margin: auto;
+    max-width: 216px;
     height: 216px;
     background-color: #FFFFFF;
     border-bottom: 2px solid #FFB300;
 }
+
 .ImagesBlog{
     display: flex;
-    position: relative;
     text-transform: uppercase;
     text-align: center;
 }
+
 .comment{
     margin: 5px 5px 0 0;
     position: relative;
@@ -277,10 +271,12 @@ header {
     text-align: right;
     padding: 20px 0px 0 0;
 }
+
 footer{
     margin-top: 20px;
     border-top: 10px solid #000;
 }
+
 .footerContent{
     display: flex;
     flex-direction: row;
@@ -288,25 +284,32 @@ footer{
     padding-right: 100px;
     padding-top: 20px;
 }
+
 .footerContentFirst{
     display: flex;
 }
+
 .footerContentSecond{
     display: flex;
 }
+
 .footerContentThird{
     display: flex;
 }
+
 .footerContentFourth{
     display: flex;
 }
+
 .footerTitleText{
     color: #222;
     padding-bottom: 15px;
 }
+
 .footertitle{
     display: flex;
 }
+
 .botFooter{
     padding:50px;
     display: flex;
@@ -319,18 +322,22 @@ footer{
 .secondBotFooter a{
     color: #FFFFFF;
 }
+
 .secondBotFooter{
     display: flex;
-flex-direction: row;
+    flex-direction: row;
     align-items: center;
 }
+
 .logoWhite{
     float: left;
 }
+
 .column{
     display: flex;
     flex-direction: column;
 }
+
 .space{
     padding-right: 10px;
 }
