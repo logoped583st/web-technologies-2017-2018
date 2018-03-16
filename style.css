@@ -171,6 +171,7 @@ header {
     background-color: #328AAB;
 }
 .mainContent{
+    padding-top: 50px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -196,10 +197,9 @@ header {
     display: flex;
     width: 688px;
     height: 360px;
-    justify-content: center;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 20px;
+    margin-left: 20px;
+    justify-content: flex-end;
+    background-image: url(images/Jam_Birthday_Weekend_Banner_v1-1.png);
     margin-top: 30px;
 }
 
@@ -221,10 +221,12 @@ header {
 
 .Button2{
     display: flex;
+    flex-direction: row;
     background-color: #64A4BD;
     border: none;
+    margin: 0 20px 20px 0;
+
     align-self:flex-end;
-    margin: -70px 15px 0 0;
     color: #FFFFFF;
     font-size: 15px;
     font-weight: 400;
