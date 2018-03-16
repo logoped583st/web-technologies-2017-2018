@@ -62,7 +62,7 @@ h1{
     color: white;
     font-weight: 700;
     font-size: 20px;
-    line-height: 1;
+    line-height: 25px;
 }
 
 h2{
@@ -71,18 +71,60 @@ h2{
     font-weight: 200;
 }
 
+h3{
+    color: #000000;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+h4{
+    color: #000000;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+footer{
+    background-color: #858279;
+}
+
+a:link{
+    color: #000000;
+    font-size: 16px;
+    font-weight: 300;
+}
+a:hover{
+    text-decoration: underline;
+}
+
+hr{
+    margin-top: 5px;
+    color: #FFB300;
+    height:1px;
+    border: none;
+    width: 926px;
+    background-color:#FFB300; 
+}
+
 header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    z-index: 2;
     position: fixed;
     max-width: 1124px;
 }
 
 .main {
+    display: flex;
+    flex-direction: column;
     background-color: #E6E2DD;
     max-width: 1024px;
     margin: auto;
 }
 
 .navigation ul li {
+    display: flex;
+    justify-content: center;
     float: left;
     width: 154px;
     height: 50px;
@@ -90,6 +132,7 @@ header {
 }
 
 .navigation ul li a {
+    display: flex;
     display: block;
     height: 35px;
     padding:15px 0 0;
@@ -97,41 +140,48 @@ header {
 }
 
 .navigation ul li.logo {
+    display: flex;
     width: 50px;
     padding: 0;
 }
 
 .greenHelp {
+    display: flex;
     background-color: #008375;
 }
 
 .yellowBlog {
+    display: flex;
     background-color: #FFB300;
 }
 
 .redDownloads {
+    display: flex;
     background-color: #C61931;
 }
 
 .purpleComm {
+    display: flex;
     background-color: #71456C;
 }
 
 .orangeFor {
+    display: flex;
     background-color: #FD4F57;
 }
 
 .blueEduc {
+    display: flex;
     background-color: #328AAB;
 }
 .mainContent{
     display: flex;
     flex-direction: row;
-    width: 924px;
     margin: auto;
     padding-top: 50px;
 }
 .raspberryBuy{
+    display: flex;
     margin-top: 10px;
     float: right;
     width: 196px;
@@ -140,6 +190,8 @@ header {
 
 .first{
     float: left;
+    display: flex;
+
     position: relative;
     flex-direction: column;
     background-color: #64A4BD;
@@ -181,4 +233,104 @@ header {
     font-weight: 400;
     text-align: center;
     line-height: 3;
+}
+.FromBlog{
+    display: flex;
+    width: 924px;
+    padding-top: 50px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column
+}
+.ImagesBlog{
+    width: 924px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.BlogSize{
+    width: 216px;
+    height: 216px;
+    background-color: #FFFFFF;
+    border-bottom: 2px solid #FFB300;
+}
+.ImagesBlog{
+    display: flex;
+    position: relative;
+    text-transform: uppercase;
+    text-align: center;
+}
+.comment{
+    margin: 5px 5px 0 0;
+    position: relative;
+    font-weight: 300;
+    color: #FFFFFF;
+    float: right;
+    width: 34px;
+    height: 24px;
+    background: url("images/comment.png")
+}
+
+.SeeArchive{
+    text-align: right;
+    padding: 20px 0px 0 0;
+}
+footer{
+    margin-top: 20px;
+    border-top: 10px solid #000;
+}
+.footerContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-right: 100px;
+    padding-top: 20px;
+}
+.footerContentFirst{
+    display: flex;
+}
+.footerContentSecond{
+    display: flex;
+}
+.footerContentThird{
+    display: flex;
+}
+.footerContentFourth{
+    display: flex;
+}
+.footerTitleText{
+    color: #222;
+    padding-bottom: 15px;
+}
+.footertitle{
+    display: flex;
+}
+.botFooter{
+    padding:50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.firstBotFooter{
+    display: flex;
+}
+.secondBotFooter a{
+    color: #FFFFFF;
+}
+.secondBotFooter{
+    display: flex;
+flex-direction: row;
+    align-items: center;
+}
+.logoWhite{
+    float: left;
+}
+.column{
+    display: flex;
+    flex-direction: column;
+}
+.space{
+    padding-right: 10px;
 }
