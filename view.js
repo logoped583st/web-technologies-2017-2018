@@ -24,7 +24,7 @@ Rx.Observable.fromEvent(inputText, "input")
             button.disabled = false;
         }
     })
-    
+
 export function setData(obj) {
 
     clear(data)
@@ -54,5 +54,10 @@ export function setData(obj) {
     append(dataFragment, location);
     append(dataFragment, blog);
     append(data, dataFragment);
+}
+
+export function errorReuqest(){
+    let error = create('p');
+    return setError(error, data, 'error-style');
 }
 

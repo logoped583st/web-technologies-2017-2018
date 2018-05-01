@@ -1,8 +1,8 @@
 'use strict';
 
 const data = document.getElementById('info');
-const submit = document.getElementById('sbmt');
-const input = document.getElementById('srch');
+const submit = document.getElementById('button');
+const input = document.getElementById('input');
 
 function create(elem) {
     return document.createElement(elem);
@@ -41,9 +41,9 @@ function clear(container) {
     }
 }
 
-function setError(field, container, style) {
+function setError(field, container, style ) {
     field.setAttribute('class', style);
-    field.innerText = `User ${input.value} not found`;
+    field.innerText = "ERROR";
     clear(container);
     append(container, field);
 }
