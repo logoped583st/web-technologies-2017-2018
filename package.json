@@ -1,0 +1,25 @@
+{
+  "name": "web-technologies-2017-2018",
+  "version": "1.0.0",
+  "description": "",
+  "main": "view.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/logoped583st/web-technologies-2017-2018.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/logoped583st/web-technologies-2017-2018/issues"
+  },
+  "homepage": "https://github.com/logoped583st/web-technologies-2017-2018#readme",
+  "dependencies": {
+    "webpack": "^4.6.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^2.0.14"
+  }
+}
