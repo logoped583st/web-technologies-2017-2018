@@ -1,5 +1,8 @@
+let Rx = require('rxjs/Rx');
 
-var responceObj
-export const setObj = function(any){
-    responceObj = any;
+export function request(login) {
+    return fetch(`https://api.github.com/users/${login}`)
+        .then(function (response) {
+            return response.json();
+        });
 }

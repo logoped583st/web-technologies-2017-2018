@@ -1,12 +1,10 @@
 let Rx = require('rxjs/Rx');
-import {setObj} from './model.js'
-export var create = function(){
-    'use strict';
-    fetch('https://api.github.com/users/fasd')
-        .then(function (response) {
-            var observable = Rx.Observable.fromPromise(response.json());
-            observable.subscribe(function subscribe(x){
-                setObj(x);
-            })
-        });
-    }
+import { request } from './model.js'
+import {setData} from './view.js'
+
+export const sendRequest = function (login) {
+    let observable = Rx.Observable.fromPromise(request(login));
+    observable.subscribe(function (x) {
+        setData(x);
+    })
+}
