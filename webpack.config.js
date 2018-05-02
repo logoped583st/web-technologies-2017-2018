@@ -1,6 +1,6 @@
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
-    entry: ["./view.js","./presenter.js","./model.js","./dom.js"],
+    entry: "./script.js",
     output: {
       filename: "main.js"
     },
