@@ -14,6 +14,8 @@ bin-release/
 *.ipa
 *.apk
 ./idea
+.idea/
+.node_module/
 ./node_modules
 ./vs
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
