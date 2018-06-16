@@ -1,14 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
+import store from './reducers/store';
+import {Provider} from "react-redux";
+import { Fragment} from 'react';
+import SearchComponent from './components/SearchComponent';
 
-class App extends Component {
-  render() {
+
+
+class App extends React.Component {
+  render(){
     return (
-      <div className="Lab4">
-     
-      </div>
+        <Provider store={store}>
+            <Fragment>
+              
+                <SearchComponent/>
+            </Fragment>
+        </Provider>
     );
-  }
+}
 }
 
 export default App;
