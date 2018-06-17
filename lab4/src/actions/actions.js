@@ -1,9 +1,7 @@
-
 export const fetchSuccess = (responce)=>(dispatch)=>  {
-    console.log(responce)
     return dispatch(
         {
-            type: 'GET_SUCCESS',
+            type: 'RESPONCE_SUCCESS_USER',
             data: {
                 image: responce.avatar_url,
                 name: responce.name,
@@ -17,4 +15,21 @@ export const fetchSuccess = (responce)=>(dispatch)=>  {
             }
         }
     )
+};
+
+
+export const fetchSuccessOrg = (responce)=>(dispatch)=>  {
+    console.log(responce);
+    responce.map(obj=>{
+        return dispatch(
+            {
+                type: 'RESPONCE_SUCCESS_ORGS',
+                data: {
+                    image: obj.avatar_url,
+                    login: obj.login,
+                }
+            }
+        )
+    })
+  
 };

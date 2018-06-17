@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { sendRequest } from '../requsets/requests'
+import { sendRequestOrgs } from '../requsets/requests'
 
 class SearchComponent extends React.Component {
 
@@ -19,6 +20,7 @@ class SearchComponent extends React.Component {
 
     search() {
         this.props.sendRequest(this.state.text);
+        this.props.sendRequestOrgs(this.state.text);
     }
 
     render() {
@@ -33,4 +35,4 @@ class SearchComponent extends React.Component {
 
 
 
-export default connect(null ,{sendRequest})(SearchComponent);
+export default connect(null, { sendRequest,sendRequestOrgs })(SearchComponent);
