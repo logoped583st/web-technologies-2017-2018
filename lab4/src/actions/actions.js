@@ -1,6 +1,5 @@
 
-
-export const fetchSuccess = (dispatch)=> (responce)=> {
+export const fetchSuccess = (responce)=>(dispatch)=>  {
     console.log(responce)
     return dispatch(
         {
