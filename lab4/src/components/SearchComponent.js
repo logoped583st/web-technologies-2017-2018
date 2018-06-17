@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { sendRequest } from '../requsets/requests'
-import { sendRequestOrgs } from '../requsets/requests'
+import { sendRequest } from '../requsets/Requests'
+import { sendRequestOrgs } from '../requsets/Requests'
 
 class SearchComponent extends React.Component {
 

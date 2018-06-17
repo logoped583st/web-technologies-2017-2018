@@ -1,16 +1,14 @@
 const initialStateOrgs = {
-    image: '',
-    login: '',
+    textArea1: '',
+    textArea2: '',
+    textArea3: ''
 };
 
 
-const reducerOrgs = (state , action) => {
+const reducerTextArea = (state , action) => {
 
     switch (action.type) {
-        case 'RESPONCE_SUCCESS_ORGS': {
-            return Object.assign({}, state.reducerOrgs, action.data);
-        }
-        case 'RESPONCE_SUCCESS_ORGS_EMPTY':{
+        case 'TextChange': {
             return Object.assign({}, state.reducerOrgs, action.data);
         }
         default: {
@@ -23,4 +21,4 @@ const reducerOrgs = (state , action) => {
     }
 };
 
-export default reducerOrgs;
+export default reducerTextArea;

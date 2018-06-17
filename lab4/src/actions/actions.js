@@ -1,4 +1,4 @@
-export const fetchSuccess = (responce)=>(dispatch)=>  {
+export const fetchSuccess = (responce) => (dispatch) => {
     return dispatch(
         {
             type: 'RESPONCE_SUCCESS_USER',
@@ -18,9 +18,9 @@ export const fetchSuccess = (responce)=>(dispatch)=>  {
 };
 
 
-export const fetchSuccessOrg = (responce)=>(dispatch)=>  {
+export const fetchSuccessOrg = (responce) => (dispatch) => {
     console.log(responce);
-    if(responce.length===0){
+    if (responce.length === 0) {
         console.log("EMPTY");
         return dispatch(
             {
@@ -28,7 +28,7 @@ export const fetchSuccessOrg = (responce)=>(dispatch)=>  {
             }
         )
     }
-    responce.map(obj=>{
+    responce.map(obj => {
         return dispatch(
             {
                 type: 'RESPONCE_SUCCESS_ORGS',
@@ -39,5 +39,16 @@ export const fetchSuccessOrg = (responce)=>(dispatch)=>  {
             }
         )
     })
-  
+};
+
+
+export const textChangeInArea = (text,idArea) => (dispatch) => {
+    return dispatch(
+        {
+            type: 'TextChange',
+            data: {
+                idArea: text
+            }
+        }
+    )
 };
