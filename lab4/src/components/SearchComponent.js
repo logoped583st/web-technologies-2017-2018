@@ -12,6 +12,14 @@ class SearchComponent extends React.Component {
         };
         this.textChange = this.textChange.bind(this);
         this.search = this.search.bind(this);
+        this.enterPress = this.enterPress.bind(this);
+    }
+
+    enterPress = (e) => {
+        if (e.key === 'Enter') {
+            console.log("ENTER");
+            this.search();
+        }
     }
 
     textChange(e) {
@@ -26,7 +34,7 @@ class SearchComponent extends React.Component {
     render() {
         return (
             <div className='Search'>
-                <input id='inputText' type='text' onChange={this.textChange} placeholder="Username" />
+                <input id='inputText' type='text' onChange={this.textChange} placeholder="Username"  onKeyDown={this.enterPress}/>
                 <button onClick={this.search}>Search</button>
             </div>
         );
@@ -35,4 +43,4 @@ class SearchComponent extends React.Component {
 
 
 
-export default connect(null, { sendRequest,sendRequestOrgs })(SearchComponent);
+export default connect(null, { sendRequest, sendRequestOrgs })(SearchComponent);

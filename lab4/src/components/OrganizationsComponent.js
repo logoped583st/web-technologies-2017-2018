@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 function BioComponent(props) {
     return (
-        props.login !='' &&  <div className="ORGS">
+        props.login!=='' &&  <div className="ORGS">
            
             <h3>Organizations</h3>
             <div>

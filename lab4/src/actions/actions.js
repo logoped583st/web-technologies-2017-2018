@@ -20,6 +20,14 @@ export const fetchSuccess = (responce)=>(dispatch)=>  {
 
 export const fetchSuccessOrg = (responce)=>(dispatch)=>  {
     console.log(responce);
+    if(responce.length===0){
+        console.log("EMPTY");
+        return dispatch(
+            {
+                type: 'RESPONCE_SUCCESS_ORGS_EMPTY',
+            }
+        )
+    }
     responce.map(obj=>{
         return dispatch(
             {
