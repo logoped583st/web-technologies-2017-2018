@@ -2,6 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { sendRequest } from '../requsets/Requests'
 import { sendRequestOrgs } from '../requsets/Requests'
+import { sendRequestFollowers } from '../requsets/Requests'
+import { sendRequestRepos } from '../requsets/Requests'
+
+
 
 class SearchComponent extends React.Component {
 
@@ -29,13 +33,17 @@ class SearchComponent extends React.Component {
     search() {
         this.props.sendRequest(this.state.text);
         this.props.sendRequestOrgs(this.state.text);
+        this.props.sendRequestFollowers(this.state.text);
+        this.props.sendRequestRepos(this.state.text);
     }
 
     render() {
         return (
             <div className='Search'>
-                <input id='inputText' type='text' onChange={this.textChange} placeholder="Username"  onKeyDown={this.enterPress}/>
+                <input id='inputText' type='text' onChange={this.textChange} placeholder="Username" onKeyDown={this.enterPress} />
                 <button onClick={this.search}>Search</button>
+
+
             </div>
         );
     }
@@ -43,4 +51,4 @@ class SearchComponent extends React.Component {
 
 
 
-export default connect(null, { sendRequest, sendRequestOrgs })(SearchComponent);
+export default connect(null, { sendRequest, sendRequestOrgs, sendRequestRepos, sendRequestFollowers })(SearchComponent);

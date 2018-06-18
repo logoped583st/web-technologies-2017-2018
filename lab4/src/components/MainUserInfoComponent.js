@@ -8,11 +8,11 @@ function MainUserInfoComponent(props) {
         <div className="MainUser">
             <div className="image_table">
                 <img src={props.image} alt={props.name} />
-                <TabsComponent className="Table"/>
+                <TabsComponent className="Table" />
             </div>
             <h2>{props.name}</h2>
             <h3>{props.login}</h3>
-
+           
         </div>
     );
 }

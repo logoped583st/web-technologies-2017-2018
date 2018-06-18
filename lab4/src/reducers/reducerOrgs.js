@@ -1,6 +1,6 @@
 const initialStateOrgs = {
-    image: '',
-    login: '',
+    image: [],
+    login: [],
 };
 
 

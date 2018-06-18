@@ -2,16 +2,19 @@ import React from 'react';
 import { connect } from "react-redux";
 
 
-function BioComponent(props) {
-    console.log(props.login)
+function OrganizationsComponent(props) {
     return (
-        props.login !== '' && <div className="ORGS">
+        props.login.length!==0 && <div className="ORGS">
 
             <h2>Organizations</h2>
-            <div className="orgs_adds">
-                <h3>{props.login}</h3>
-                <img src={props.image} alt={props.image} />
-            </div>
+            {props.login.map(function(item, i) { 
+                return (<div className="orgs_adds">
+                    <h3>{item}</h3>
+                    <img src={props.image[i]} alt={props.image[i]} />
+                </div>)
+
+            })}
+
         </div>
     );
 }
@@ -23,4 +26,4 @@ const getState = (state) => {
     };
 };
 
-export default connect(getState)(BioComponent);
+export default connect(getState)(OrganizationsComponent);
