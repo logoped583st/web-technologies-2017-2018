@@ -18,10 +18,13 @@ export const fetchSuccess = (responce) => (dispatch) => {
     )
 };
 
-export const fetchError = (dispatch) => {
+export const fetchError =(error)=>(dispatch) => {
     return dispatch(
         {
-            type: 'RESPONCE_ERROR_USER'
+            type: 'RESPONCE_ERROR_USER',
+            data:{
+                error: true
+            }
         })
 }
 

@@ -4,8 +4,14 @@ import { connect } from "react-redux";
 
 function RepositoriesComponent(props) {
     console.log(props.login)
+    if(props.login.length===0){
+        return(
+            <h2>Emtry</h2>
+        )
+    }
     return (
-        props.login.length!==0 && <div className="REPS">
+
+        props.login.length!==0 && <div className="REPS"> 
 
         <h2>Repositories</h2>
         {props.login.map(function(item, i) { 

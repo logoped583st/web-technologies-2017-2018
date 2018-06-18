@@ -12,7 +12,8 @@ export const sendRequest = (login) => (dispatch) => {
     return fetch(baseUrl + login)
         .then(function (res) {
             console.log(res.status)
-            if (200 < res.status < 400) {
+            if (200 < res.status < 500) {
+                console.log(res.status);
                 return dispatch(fetchError())
             } else {
                 console.log(res.json().message);
@@ -20,11 +21,11 @@ export const sendRequest = (login) => (dispatch) => {
                     return dispatch(fetchError())
                 }
                 else {
-                    return res.json();
+                    dispatch(fetchSuccess(res.json()));
                 }
             }
         })
-        .then(json => dispatch(fetchSuccess(json)));
+        // .then(json => dispatch(fetchSuccess(json)));
 }
 
 export const sendRequestOrgs = (login) => (dispatch) => {

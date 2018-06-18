@@ -3,6 +3,11 @@ import { connect } from "react-redux";
 
 
 function FollowersComponent(props) {
+    if(props.login.length===0){
+        return(
+            <h2>Emtry</h2>
+        )
+    }
     return (
         props.login.length!==0 && <div className="REPS">
 
