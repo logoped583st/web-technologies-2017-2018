@@ -19,16 +19,13 @@ class TabsComponent extends React.Component {
                     <Tab>Контакты</Tab>
                 </TabList>
                 <TabPanel>
-                    <button >Edit1</button>
-                    <TextAreaComponent id="textArea1" value = {this.state.reducerTextArea}/>
+                    <TextAreaComponent id="textArea1" number={1} />
                 </TabPanel>
                 <TabPanel>
-                    <button >Edit2</button>
-                    <TextAreaComponent id="textArea2"/>
+                    <TextAreaComponent id="textArea2" number={2} />
                 </TabPanel>
                 <TabPanel>
-                    <button >Edit3</button>
-                    <TextAreaComponent id="textArea3"/>
+                    <TextAreaComponent id="textArea3" number={3} />
                 </TabPanel>
             </Tabs>
         );

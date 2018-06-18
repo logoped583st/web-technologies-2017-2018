@@ -11,7 +11,7 @@ const reducerOrgs = (state , action) => {
             return Object.assign({}, state.reducerOrgs, action.data);
         }
         case 'RESPONCE_SUCCESS_ORGS_EMPTY':{
-            return Object.assign({}, state.reducerOrgs, action.data);
+           return initialStateOrgs;
         }
         default: {
             if (state !== undefined){

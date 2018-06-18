@@ -1,32 +1,30 @@
 import React from 'react';
 import './App.css';
 import store from './reducers/Store';
-import {Provider} from "react-redux";
-import { Fragment} from 'react';
-import SearchComponent from './components/SearchComponent';
+import { Provider } from "react-redux";
+import { Fragment } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+import IndexComponent from './components/IndexComponent';
 import MainUserInfoComponent from './components/MainUserInfoComponent';
-import BioComponent from './components/BioComponent';
-import AdditionalUserInfoComponent from './components/AdditionalUserInfoComponent';
-import TabsComponent from './components/TabsComponent';
-import OrganizationsComponent from './components/OrganizationsComponent';
+
 
 
 
 class App extends React.Component {
-  render(){
-    return (
-        <Provider store={store}>
-            <Fragment>
-                <SearchComponent/>
-                <MainUserInfoComponent/>
-                <BioComponent/>
-                <AdditionalUserInfoComponent/>
-                <OrganizationsComponent/>
-                <TabsComponent/>
-            </Fragment>
-        </Provider>
-    );
-}
+    render() {
+        return (
+            <Router>
+                <Provider store={store}>
+                    <Fragment>
+                        <Route path="/index" component={IndexComponent} />
+                        <Route path="/repos" component={MainUserInfoComponent} />
+                    </Fragment>
+
+                </Provider>
+            </Router>
+        );
+    }
 }
 
 export default App;

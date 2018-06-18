@@ -1,11 +1,15 @@
 import React from 'react';
 import { connect } from "react-redux";
+import TabsComponent from './TabsComponent';
 
 
 function MainUserInfoComponent(props) {
     return (
         <div className="MainUser">
-            <img src={props.image} alt={props.name} />
+            <div className="image_table">
+                <img src={props.image} alt={props.name} />
+                <TabsComponent className="Table"/>
+            </div>
             <h2>{props.name}</h2>
             <h3>{props.login}</h3>
 

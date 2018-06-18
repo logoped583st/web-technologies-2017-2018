@@ -16,16 +16,16 @@ function AdditionalUserInfoComponent(props) {
     return (
         <div className="AdditionalUserInfo">
             {
-                blog != null && blog!=="" && <a><IconComponent icon={socialIc} />{props.blog}</a>
+                blog != null && blog!=="" && <a><IconComponent className="icon" icon={socialIc} />{props.blog}</a>
             }
             {
-                email != null && email!=="" && <a><IconComponent icon={emailIc} />{props.email}</a>
+                email != null && email!=="" && <a><IconComponent className="icon" icon={emailIc} />{props.email}</a>
             }
             {
-                location != null && location!=="" && <h5><IconComponent icon={locationIc} />{props.location}</h5>
+                location != null && location!=="" && <h5><IconComponent className="icon" icon={locationIc} />{props.location}</h5>
             }
             {
-                company != null && company!=="" &&<h5><IconComponent icon={companyIc} />{props.company}</h5>
+                company != null && company!=="" &&<h5><IconComponent className="icon" icon={companyIc} />{props.company}</h5>
             }
 
         </div>

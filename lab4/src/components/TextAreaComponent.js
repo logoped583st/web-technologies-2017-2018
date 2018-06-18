@@ -6,7 +6,8 @@ class TextAreaComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            text: ""
+            text: "",
+            number : props.number
         };
         this.textChange = this.textChange.bind(this);
     }
@@ -16,11 +17,14 @@ class TextAreaComponent extends React.Component {
         this.setState({ text: e.target.value })
     }
 
-  
+
 
     render() {
         return (
-            <textarea id='inputText' type='text' onChange={this.textChange} value={this.state.text} onKeyDown={this.enterPress} />
+            <div className="editArea">                
+                <button >Edit {this.state.number}</button>
+                <textarea className="textArea" type='text' onChange={this.textChange} value={this.state.text} onKeyDown={this.enterPress} />
+            </div>
         );
     }
 }
