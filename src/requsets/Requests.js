@@ -1,7 +1,8 @@
 import { fetchSuccess } from '../actions/actions'
 import { fetchSuccessOrg } from '../actions/actions'
 import { fetchSuccessFollowers } from '../actions/actions'
-import {fetchSuccessRepos} from '../actions/actions'
+import { fetchSuccessRepos } from '../actions/actions'
+import { fetchError } from '../actions/actions'
 
 
 const baseUrl = 'https://api.github.com/users/';
@@ -9,7 +10,20 @@ const baseUrl = 'https://api.github.com/users/';
 
 export const sendRequest = (login) => (dispatch) => {
     return fetch(baseUrl + login)
-        .then(res => res.json())
+        .then(function (res) {
+            console.log(res.status)
+            if (200 < res.status < 400) {
+                return dispatch(fetchError())
+            } else {
+                console.log(res.json().message);
+                if (res.message === "Not Found") {
+                    return dispatch(fetchError())
+                }
+                else {
+                    return res.json();
+                }
+            }
+        })
         .then(json => dispatch(fetchSuccess(json)));
 }
 

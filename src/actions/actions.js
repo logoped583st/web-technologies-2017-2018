@@ -11,11 +11,19 @@ export const fetchSuccess = (responce) => (dispatch) => {
                 company: responce.company,
                 location: responce.location,
                 email: responce.email,
-                social: responce.social
+                social: responce.social,
+                error: false
             }
         }
     )
 };
+
+export const fetchError = (dispatch) => {
+    return dispatch(
+        {
+            type: 'RESPONCE_ERROR_USER'
+        })
+}
 
 
 export const fetchSuccessOrg = (responce) => (dispatch) => {
@@ -27,8 +35,8 @@ export const fetchSuccessOrg = (responce) => (dispatch) => {
             }
         )
     }
-    const imageAr=[];
-    const loginAr=[];
+    const imageAr = [];
+    const loginAr = [];
     responce.map(obj => {
         imageAr.push(obj.avatar_url);
         loginAr.push(obj.login);
@@ -45,7 +53,7 @@ export const fetchSuccessOrg = (responce) => (dispatch) => {
 };
 
 
-export const textChangeInArea = (text,idArea) => (dispatch) => {
+export const textChangeInArea = (text, idArea) => (dispatch) => {
     return dispatch(
         {
             type: 'TextChange',
@@ -65,13 +73,13 @@ export const fetchSuccessRepos = (responce) => (dispatch) => {
             }
         )
     }
-    const imageAr=[];
-    const loginAr=[];
-   
-        responce.map(obj => {
-            imageAr.push(obj.html_url);
-            loginAr.push(obj.name);
-        })
+    const imageAr = [];
+    const loginAr = [];
+
+    responce.map(obj => {
+        imageAr.push(obj.html_url);
+        loginAr.push(obj.name);
+    })
     return dispatch(
         {
             type: 'RESPONCE_SUCCESS_REPOS',
@@ -93,8 +101,8 @@ export const fetchSuccessFollowers = (responce) => (dispatch) => {
             }
         )
     }
-    const imageAr=[];
-    const loginAr=[];
+    const imageAr = [];
+    const loginAr = [];
     responce.map(obj => {
         imageAr.push(obj.avatar_url);
         loginAr.push(obj.login);
