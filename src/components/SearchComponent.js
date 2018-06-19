@@ -1,11 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { sendRequest } from '../requsets/Requests'
-import { sendRequestOrgs } from '../requsets/Requests'
-import { sendRequestFollowers } from '../requsets/Requests'
-import { sendRequestRepos } from '../requsets/Requests'
-
-
+import { bindActionCreators } from 'redux';
+import { fetchUserRequest } from '../actions/actions'
 
 class SearchComponent extends React.Component {
 
@@ -31,10 +27,10 @@ class SearchComponent extends React.Component {
     }
 
     search() {
-        this.props.sendRequest(this.state.text);
-        this.props.sendRequestOrgs(this.state.text);
-        this.props.sendRequestFollowers(this.state.text);
-        this.props.sendRequestRepos(this.state.text);
+    
+        this.props.fetchUserRequest(this.state.text)   
+
+    
     }
 
     render() {
@@ -48,7 +44,9 @@ class SearchComponent extends React.Component {
         );
     }
 }
+const mapDispatchToProps = dispatch => bindActionCreators({
+    fetchUserRequest,
+    }, dispatch);
 
 
-
-export default connect(null, { sendRequest, sendRequestOrgs, sendRequestRepos, sendRequestFollowers })(SearchComponent);
+export default connect(null,mapDispatchToProps)(SearchComponent);

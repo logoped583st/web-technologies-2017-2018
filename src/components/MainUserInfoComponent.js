@@ -22,7 +22,7 @@ const getState = (state) => {
     console.log(state);
     return {
         name: state.reducerUser.name,
-        image: state.reducerUser.image,
+        image: state.reducerUser.avatar_url,
         login: state.reducerUser.login,
     };
 };

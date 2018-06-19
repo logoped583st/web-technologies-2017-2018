@@ -8,17 +8,16 @@ const initialStateUser = {
     location: '',
     email: '',
     social: '',
-    error:null
 };
 
 
 const reducerUser = (state = initialStateUser, action) => {
     switch (action.type) {
-        case 'RESPONCE_SUCCESS_USER': {
-            return Object.assign({}, state.reducerUser, action.data);
+        case 'GET_USER_SUCCESS': {
+            return Object.assign({}, state.reducerUser, action.user);
         }
         case 'RESPONCE_ERROR_USER':{
-            return Object.assign({}, state.reducerUser, action.data);
+            return Object.assign({}, state.reducerUser, action.user);
         }
         default: {
             if (state !== undefined) {

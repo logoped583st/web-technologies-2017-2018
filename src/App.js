@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import store from './reducers/Store';
 import { Provider } from "react-redux";
 import { Fragment } from 'react';
 import {HashRouter, Route, Link} from "react-router-dom";
@@ -8,6 +7,10 @@ import IndexComponent from './components/IndexComponent';
 import RepositoriesComponent from './components/RepositoriesComponent';
 import FollowersComponent from './components/FollowersComponent';
 
+import configureStore from './reducers/Store'
+
+
+const store = configureStore()
 
 
 class App extends React.PureComponent {
