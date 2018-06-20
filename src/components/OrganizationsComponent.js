@@ -10,7 +10,6 @@ function OrganizationsComponent(props) {
             OrgsArr.push(props.Orgs[org])
         }
     }
-    console.log(OrgsArr)
 
     return (
         (OrgsArr.length!==0)&& <div className="ORGS">

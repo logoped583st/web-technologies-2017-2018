@@ -21,10 +21,13 @@ export  function* fetchRepos(action){
 }
 
 export  function* fetchFollowers(action){
-    
     const followers = yield call(request.sendRequestFollowers,action.username)
-    console.log(followers);
     yield put(actions.fetchFollowersSuccess(followers));
+}
+
+export  function* fetchAllRepos(action){  
+    const repos = yield call(request.sendRequestAllRepos,action.username)
+    yield put(actions.fetchAllReposSuccess(repos));
 }
 
 export function* watchFetchUser() {
@@ -43,11 +46,16 @@ export function* watchFetchFollowers() {
     yield takeLatest(constants.GET_FOLLOWERS_REQUEST, fetchFollowers);
 }
 
+export function* watchFetchAllRepos() {
+    yield takeLatest(constants.GET_ALL_REPOS_REQUEST, fetchAllRepos);
+}
+
 export default function* rootSaga() {
     yield all([
         watchFetchUser(),
         watchFetchOrgs(),
         watchFetchFollowers(),
-        watchFetchRepos()
+        watchFetchRepos(),
+        watchFetchAllRepos()
     ])
 }

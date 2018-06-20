@@ -5,6 +5,7 @@ import MainUserInfoComponent from './MainUserInfoComponent';
 import BioComponent from './BioComponent';
 import AdditionalUserInfoComponent from './AdditionalUserInfoComponent';
 import OrganizationsComponent from './OrganizationsComponent';
+import AllReposFind from './AllReposFind';
 
 
 
@@ -18,7 +19,7 @@ class IndexComponent extends React.Component {
                 <BioComponent />
                 <AdditionalUserInfoComponent />
                 <OrganizationsComponent />
-
+                <AllReposFind/>
             </Fragment>
         );
     }

@@ -1,15 +1,7 @@
 import * as constatnts from '../Constants'
 
 const initialStateUser = {
-    image: '',
-    name: '',
-    login: '',
-    bio: '',
-    blog: '',
-    company: '',
-    location: '',
-    email: '',
-    social: '',
+
 };
 
 

@@ -1,5 +1,5 @@
 const baseUrl = 'https://api.github.com/users/';
-
+const allReposUrl = 'https://api.github.com/search/repositories?q='
 
 export const sendRequest = (login) => {
     return fetch(baseUrl + login)
@@ -19,6 +19,10 @@ export const sendRequestFollowers = (login)  => {
 
 export const sendRequestRepos = (login)  => {
     return fetch(baseUrl + login + "/repos")
-        .then(res => res.json())
-        
+        .then(res => res.json())   
+}
+
+export const sendRequestAllRepos = (login)  => {
+    return fetch(allReposUrl + login)
+        .then(res => res.json())   
 }

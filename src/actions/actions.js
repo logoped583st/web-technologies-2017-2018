@@ -41,3 +41,13 @@ export const fetchReposSuccess = (data) => ({
     Repos: data
 })
 
+export const fetchAllReposRequest = (username) => ({
+    type: constatnts.GET_ALL_REPOS_REQUEST,
+    username: username
+})
+
+export const fetchAllReposSuccess = (data) => ({
+    type: constatnts.GET_ALL_REPOS_SUCCESS,
+    Repos: data
+})
+

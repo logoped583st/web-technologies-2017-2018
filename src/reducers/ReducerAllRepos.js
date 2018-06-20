@@ -5,10 +5,10 @@ const initialStateFollowers = {
 };
 
 
-const reducerFollowers = (state, action) => {
+const reducerAllRepos = (state, action) => {
     switch (action.type) {
-        case constatnts.GET_FOLLOWERS_SUCCESS: {
-            return Object.assign({}, state.reducerFollowers, action.Followers);
+        case constatnts.GET_ALL_REPOS_SUCCESS: {
+            return Object.assign({}, state.reducerAllRepos, action.Repos);
         }
         default: {
             if (state !== undefined) {
@@ -20,4 +20,4 @@ const reducerFollowers = (state, action) => {
     }
 };
 
-export default reducerFollowers;
+export default reducerAllRepos;
