@@ -1,18 +1,17 @@
+import * as constants from '../Constants'
+
 const initialStateOrgs = {
-    image: [],
-    login: [],
+
 };
 
 
 const reducerOrgs = (state , action) => {
 
     switch (action.type) {
-        case 'RESPONCE_SUCCESS_ORGS': {
-            return Object.assign({}, state.reducerOrgs, action.data);
+        case constants.GET_ORGS_SUCCESS: {
+            return Object.assign({}, state.reducerOrgs, action.Orgs);
         }
-        case 'RESPONCE_SUCCESS_ORGS_EMPTY':{
-           return initialStateOrgs;
-        }
+  
         default: {
             if (state !== undefined){
                 return state;

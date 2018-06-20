@@ -1,16 +1,14 @@
+import * as constatnts from '../Constants'
+
 const initialStateRepos = {
-    image : [],
-    login: [],
+
 };
 
 
 const reducerRepos = (state , action) => {
     switch (action.type) {
-        case 'RESPONCE_SUCCESS_REPOS': {
-            return Object.assign({}, state.reducerRepos, action.data);
-        }
-        case 'RESPONCE_SUCCESS_REPOS_EMPTY':{
-           return initialStateRepos;
+        case constatnts.GET_REPOS_SUCCESS: {
+            return Object.assign({}, state.reducerRepos, action.Repos);
         }
         default: {
             if (state !== undefined){

@@ -4,9 +4,11 @@ import { combineReducers } from 'redux';
 
 import reducerUser from '../reducers/ReducerUser';
 import reducerOrgs from '../reducers/ReducerOrgs'
+import reduserRepos from '../reducers/ReducerRepos'
+import reduserFollowers from '../reducers/ReducerFollowers'
 import rootSaga from '../actions/saga';
 
-const redusers = combineReducers({reducerUser,reducerOrgs})
+const redusers = combineReducers({reducerUser,reducerOrgs,reduserFollowers,reduserRepos})
 
 export default () => {
     const sagaMiddleware = createSagaMiddleware();

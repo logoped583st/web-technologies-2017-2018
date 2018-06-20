@@ -1,3 +1,5 @@
+import * as constatnts from '../Constants'
+
 const initialStateUser = {
     image: '',
     name: '',
@@ -13,7 +15,7 @@ const initialStateUser = {
 
 const reducerUser = (state = initialStateUser, action) => {
     switch (action.type) {
-        case 'GET_USER_SUCCESS': {
+        case constatnts.GET_USER_SUCCESS: {
             return Object.assign({}, state.reducerUser, action.user);
         }
         case 'RESPONCE_ERROR_USER':{

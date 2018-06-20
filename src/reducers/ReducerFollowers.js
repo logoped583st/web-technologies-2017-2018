@@ -1,18 +1,16 @@
+import * as constatnts from '../Constants'
+
 const initialStateFollowers = {
-    image : [],
-    login: [],
+    
 };
 
 
 const reducerFollowers = (state , action) => {
-    console.log(action.data);
+    console.log(action.Followers);
     switch (action.type) {
     
-        case 'RESPONCE_SUCCESS_FOLLOWERS': {
-            return Object.assign({}, state.reducerFollowers, action.data);
-        }
-        case 'RESPONCE_SUCCESS_FOLLIWERS_EMPTY':{
-           return initialStateFollowers;
+        case constatnts.GET_FOLLOWERS_SUCCESS: {
+            return Object.assign({}, state.reducerFollowers, action.Followers);
         }
         default: {
             if (state !== undefined){

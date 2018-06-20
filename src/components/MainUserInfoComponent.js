@@ -19,7 +19,6 @@ function MainUserInfoComponent(props) {
 }
 
 const getState = (state) => {
-    console.log(state);
     return {
         name: state.reducerUser.name,
         image: state.reducerUser.avatar_url,

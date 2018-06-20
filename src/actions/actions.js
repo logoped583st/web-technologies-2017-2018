@@ -1,133 +1,43 @@
-export const GET_USER_REQUEST = 'GET_USER_REQUEST';
-export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
+import * as constatnts from '../Constants'
+
 
 export const fetchUserRequest = (username) => ({
-    type: GET_USER_REQUEST,
+    type: constatnts.GET_USER_REQUEST,
     username: username
 })
 
 export const fetchUserSuccess = (data) => ({
-    type: GET_USER_SUCCESS,
+    type: constatnts.GET_USER_SUCCESS,
     user: data
 })
 
-// export const fetchSuccessOrg = (responce) => (dispatch) => {
-//     if (responce.length === 0) {
-//         console.log("EMPTY");
-//         return dispatch(
-//             {
-//                 type: 'RESPONCE_SUCCESS_ORGS_EMPTY',
-//             }
-//         )
-//     }
-//     const imageAr = [];
-//     const loginAr = [];
-//     responce.map(obj => {
-//         imageAr.push(obj.avatar_url);
-//         loginAr.push(obj.login);
-//     })
-//     return dispatch(
-//         {
-//             type: 'RESPONCE_SUCCESS_ORGS',
-//             data: {
-//                 image: imageAr,
-//                 login: loginAr,
-//             }
-//         }
-//     )
-// };
+export const fetchOrgsRequest = (username) => ({
+    type: constatnts.GET_ORGS_REQUEST,
+    username: username
+})
 
+export const fetchOrgsSuccess = (data) => ({
+    type: constatnts.GET_ORGS_SUCCESS,
+    Orgs: data
+})
 
-// export const textChangeInArea = (text, idArea) => (dispatch) => {
-//     return dispatch(
-//         {
-//             type: 'TextChange',
-//             data: {
-//                 idArea: text
-//             }
-//         }
-//     )
-// };
+export const fetchFollowersRequest = (username) => ({
+    type: constatnts.GET_FOLLOWERS_REQUEST,
+    username: username
+})
 
-// export const fetchSuccessRepos = (responce) => (dispatch) => {
-//     if (responce.length === 0) {
-//         console.log("EMPTY");
-//         return dispatch(
-//             {
-//                 type: 'RESPONCE_SUCCESS_REPOS_EMPTY',
-//             }
-//         )
-//     }
-//     const imageAr = [];
-//     const loginAr = [];
+export const fetchFollowersSuccess = (data) => ({
+    type: constatnts.GET_FOLLOWERS_SUCCESS,
+    Followers: data
+})
 
-//     responce.map(obj => {
-//         imageAr.push(obj.html_url);
-//         loginAr.push(obj.name);
-//     })
-//     return dispatch(
-//         {
-//             type: 'RESPONCE_SUCCESS_REPOS',
-//             data: {
-//                 image: imageAr,
-//                 login: loginAr,
-//             }
-//         }
-//     )
-// };
+export const fetchReposRequest = (username) => ({
+    type: constatnts.GET_REPOS_REQUEST,
+    username: username
+})
 
-// export const fetchSuccessFollowers = (responce) => (dispatch) => {
-//     console.log(responce);
-//     if (responce.length === 0) {
-//         console.log("EMPTY");
-//         return dispatch(
-//             {
-//                 type: 'RESPONCE_SUCCESS_FOLLIWERS_EMPTY',
-//             }
-//         )
-//     }
-//     const imageAr = [];
-//     const loginAr = [];
-//     responce.map(obj => {
-//         imageAr.push(obj.avatar_url);
-//         loginAr.push(obj.login);
-//     })
+export const fetchReposSuccess = (data) => ({
+    type: constatnts.GET_REPOS_SUCCESS,
+    Repos: data
+})
 
-//     return dispatch(
-//         {
-//             type: 'RESPONCE_SUCCESS_FOLLOWERS',
-//             data: {
-//                 image: imageAr,
-//                 login: loginAr,
-//             }
-//         }
-//     )
-// export const fetchSuccess = (responce) => (dispatch) => {
-//     return dispatch(
-//         {
-//             type: 'RESPONCE_SUCCESS_USER',
-//             data: {
-//                 image: responce.avatar_url,
-//                 name: responce.name,
-//                 login: responce.login,
-//                 bio: responce.bio,
-//                 blog: responce.blog,
-//                 company: responce.company,
-//                 location: responce.location,
-//                 email: responce.email,
-//                 social: responce.social,
-//                 error: false
-//             }
-//         }
-//     )
-// };
-
-// export const fetchError = (error) => (dispatch) => {
-//     return dispatch(
-//         {
-//             type: 'RESPONCE_ERROR_USER',
-//             data: {
-//                 error: true
-//             }
-//         })
-// }

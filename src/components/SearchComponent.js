@@ -2,6 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchUserRequest } from '../actions/actions'
+import { fetchOrgsRequest } from '../actions/actions'
+import { fetchFollowersRequest} from '../actions/actions'
+import { fetchReposRequest} from '../actions/actions'
+
 
 class SearchComponent extends React.Component {
 
@@ -17,7 +21,6 @@ class SearchComponent extends React.Component {
 
     enterPress = (e) => {
         if (e.key === 'Enter') {
-            console.log("ENTER");
             this.search();
         }
     }
@@ -27,10 +30,9 @@ class SearchComponent extends React.Component {
     }
 
     search() {
-    
-        this.props.fetchUserRequest(this.state.text)   
-
-    
+        this.props.fetchUserRequest(this.state.text);
+        this.props.fetchOrgsRequest(this.state.text);
+        this.props.fetchFollowersRequest(this.state.text);
     }
 
     render() {
@@ -38,15 +40,16 @@ class SearchComponent extends React.Component {
             <div className='Search'>
                 <input id='inputText' type='text' onChange={this.textChange} placeholder="Username" onKeyDown={this.enterPress} />
                 <button onClick={this.search}>Search</button>
-
-
             </div>
         );
     }
 }
 const mapDispatchToProps = dispatch => bindActionCreators({
     fetchUserRequest,
-    }, dispatch);
+    fetchOrgsRequest,
+    fetchFollowersRequest,
+    fetchReposRequest,
+}, dispatch);
 
 
-export default connect(null,mapDispatchToProps)(SearchComponent);
+export default connect(null, mapDispatchToProps)(SearchComponent);

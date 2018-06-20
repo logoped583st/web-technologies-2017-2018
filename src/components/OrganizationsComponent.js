@@ -3,17 +3,28 @@ import { connect } from "react-redux";
 
 
 function OrganizationsComponent(props) {
+    var OrgsArr=[];
+
+    for (const org in props.Orgs) {
+        if (props.Orgs.hasOwnProperty(org)) {
+            OrgsArr.push(props.Orgs[org])
+        }
+    }
+    console.log(OrgsArr)
+
     return (
-        props.login.length!==0 && <div className="ORGS">
+        (OrgsArr.length!==0)&& <div className="ORGS">
+                
 
             <h2>Organizations</h2>
-            {props.login.map(function(item, i) { 
-                return (<div className="orgs_adds">
-                    <h3>{item}</h3>
-                    <img src={props.image[i]} alt={props.image[i]} />
+            
+            {OrgsArr.map(function(item) { 
+                 return (<div className="orgs_adds">
+                    <h3>{item.login}</h3>  
+                    <img src={item.avatar_url} alt={item.avatar_url} />
                 </div>)
-
             })}
+            
 
         </div>
     );
@@ -21,8 +32,7 @@ function OrganizationsComponent(props) {
 
 const getState = (state) => {
     return {
-        login: state.reducerOrgs.login,
-        image: state.reducerOrgs.image
+        Orgs: state.reducerOrgs,
     };
 };
 
