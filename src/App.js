@@ -8,6 +8,8 @@ import RepositoriesComponent from './components/RepositoriesComponent';
 import FollowersComponent from './components/FollowersComponent';
 
 import configureStore from './reducers/Store'
+import StarsGrowReposComponent from './components/StarsGrowReposComponent';
+import TabStarsGrowReposComponent from './components/TabStarsGrowReposComponent';
 
 
 const store = configureStore()
@@ -27,11 +29,16 @@ class App extends React.PureComponent {
                                 <li>
                                     <Link to="/repos">Repos</Link>
                                 </li>
+                                <li>
+                                    <Link to="/top">Top Repos</Link>
+                                </li>
                             </ul>
                             
                             <Route exact path="" component={IndexComponent} />
                             <Route path="/followers" component={FollowersComponent} />
                             <Route path="/repos" component={RepositoriesComponent} />
+                            <Route path="/top" component={TabStarsGrowReposComponent} />
+
                         </div>
                     </HashRouter>
                 </Fragment>

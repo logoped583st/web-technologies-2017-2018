@@ -6,6 +6,7 @@ import { fetchOrgsRequest } from '../actions/actions'
 import { fetchFollowersRequest } from '../actions/actions'
 import { fetchReposRequest } from '../actions/actions'
 import { fetchAllReposRequest } from '../actions/actions'
+import { fetchStarsReposRequest } from '../actions/actions'
 
 
 class SearchComponent extends React.Component {
@@ -46,9 +47,10 @@ class SearchComponent extends React.Component {
 
     search() {
         this.props.fetchUserRequest(this.state.text);
-        this.props.fetchOrgsRequest(this.state.text);
-        this.props.fetchFollowersRequest(this.state.text);
-        this.props.fetchReposRequest(this.state.text);
+        // this.props.fetchStarsReposRequest();
+        // this.props.fetchOrgsRequest(this.state.text);
+        // this.props.fetchFollowersRequest(this.state.text);
+        // this.props.fetchReposRequest(this.state.text);
     }
 
     searchRepository() {
@@ -76,6 +78,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     fetchFollowersRequest,
     fetchReposRequest,
     fetchAllReposRequest,
+    fetchStarsReposRequest,
 }, dispatch);
 
 

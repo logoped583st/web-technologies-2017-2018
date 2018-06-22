@@ -30,6 +30,16 @@ export  function* fetchAllRepos(action){
     yield put(actions.fetchAllReposSuccess(repos));
 }
 
+export  function* fetchStarsRepos(){  
+    const repos = yield call(request.sendRequestStarsRep)
+    yield put(actions.fetchStarsReposSucces(repos));
+}
+
+export  function* fetchGrowRepos(){  
+    const repos = yield call(request.sendRequestGrowRep)
+    yield put(actions.fetchGrowReposSuccess(repos));
+}
+
 export function* watchFetchUser() {
     yield takeLatest(constants.GET_USER_REQUEST, fetchOrgs);
 }
@@ -50,12 +60,22 @@ export function* watchFetchAllRepos() {
     yield takeLatest(constants.GET_ALL_REPOS_REQUEST, fetchAllRepos);
 }
 
+export function* watchFetchStarsRepos() {
+    yield takeLatest(constants.GET_STARS_REPOS_REQUEST, fetchStarsRepos);
+}
+
+export function* watchFetchGrowRepos() {
+    yield takeLatest(constants.GET_GROW_REPOS_REQUEST, fetchGrowRepos);
+}
+
 export default function* rootSaga() {
     yield all([
         watchFetchUser(),
         watchFetchOrgs(),
         watchFetchFollowers(),
         watchFetchRepos(),
-        watchFetchAllRepos()
+        watchFetchAllRepos(),
+        watchFetchGrowRepos(),
+        watchFetchStarsRepos(),
     ])
 }

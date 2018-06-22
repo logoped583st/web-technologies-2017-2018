@@ -1,10 +1,13 @@
 import React from 'react';
 import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import TextAreaComponent from './TextAreaComponent';
+import StarsGrowReposComponent from './StarsGrowReposComponent';
+import { fetchStarsReposRequest } from '../actions/actions'
+import { fetchGrowReposRequest } from '../actions/actions'
 
-class TabsComponent extends React.Component {
-
+class TabsStarsGrowReposComponent extends React.Component {
     constructor() {
         super();
         this.state = { tabIndex: 0 };
@@ -15,19 +18,19 @@ class TabsComponent extends React.Component {
 
             <Tabs selectedIndex={this.state.tabIndex} onSelect={tabIndex => this.setState({ tabIndex })}>
                 <TabList>
-                    <Tab>Основное</Tab>
-                    <Tab>Образование</Tab>
-                    <Tab>Контакты</Tab>
+                    <Tab>Grow Repositories</Tab>
+                    <Tab>Top Repositories</Tab>
                 </TabList>
+
                 <TabPanel>
-                    <TextAreaComponent id="textArea1" number={1} />
+
+                    <StarsGrowReposComponent  request ={'GROW'}/>
                 </TabPanel>
+
                 <TabPanel>
-                    <TextAreaComponent id="textArea2" number={2} />
+                    <StarsGrowReposComponent request = {'TOP'}/>
                 </TabPanel>
-                <TabPanel>
-                    <TextAreaComponent id="textArea3" number={3} />
-                </TabPanel>
+
             </Tabs>
         );
     }
@@ -35,4 +38,5 @@ class TabsComponent extends React.Component {
 
 }
 
-export default connect(null)(TabsComponent);
+
+export default connect(null)(TabsStarsGrowReposComponent);

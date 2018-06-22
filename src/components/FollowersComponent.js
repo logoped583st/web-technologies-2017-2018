@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 function FollowersComponent(props) {
 
-    var followersArr=[];
+    var followersArr = [];
 
     for (const follower in props.followers) {
         if (props.followers.hasOwnProperty(follower)) {
@@ -13,18 +13,18 @@ function FollowersComponent(props) {
     }
 
     return (
-        (followersArr.length!==0)&& <div className="REPS">
-                
+        (followersArr.length !== 0) && <div className="REPS">
+
 
             <h2>Organizations</h2>
-            
-            {followersArr.map(function(item) { 
-                 return (<div className="orgs_adds">
-                    <h3>{item.login}</h3>  
+
+            {followersArr.map(function (item) {
+                return (<div className="orgs_adds">
+                    <h3>{item.login}</h3>
                     <img src={item.avatar_url} alt={item.avatar_url} />
                 </div>)
             })}
-            
+
 
         </div>
     );

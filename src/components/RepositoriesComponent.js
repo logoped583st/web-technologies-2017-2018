@@ -20,7 +20,7 @@ function RepositoriesComponent(props) {
             {repositoreidsArr.map(function(item) { 
                  return (<div className="orgs_adds">
                     <h2>{item.name}</h2>  
-                    <h3> {item.html_url}   <a>{item.language}</a></h3>
+                    <h3> {item.html_url}   {item.language}</h3>
                 </div>)
             })}
             
@@ -30,7 +30,6 @@ function RepositoriesComponent(props) {
 }
 
 const getState = (state) => {
-    console.log(state);
     return {
         repos: state.reduserRepos
     };

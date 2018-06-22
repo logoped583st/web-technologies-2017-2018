@@ -51,3 +51,21 @@ export const fetchAllReposSuccess = (data) => ({
     Repos: data
 })
 
+export const fetchStarsReposRequest = () => ({
+    type: constatnts.GET_STARS_REPOS_REQUEST,
+})
+
+export const fetchGrowReposRequest = () => ({
+    type: constatnts.GET_GROW_REPOS_REQUEST,
+})
+
+export const fetchStarsReposSucces = (data) => ({
+    type: constatnts.GET_STARS_REPOS_SUCCESS,
+    Repos: data
+})
+
+export const fetchGrowReposSuccess = (data) => ({
+    type: constatnts.GET_GROW_REPOS_SUCCESS,
+    Repos: data
+})
+
