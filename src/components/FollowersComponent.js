@@ -1,8 +1,15 @@
 import React from 'react';
 import { connect } from "react-redux";
+import { fetchFollowersRequest } from '../actions/actions'
+import { bindActionCreators } from 'redux';
 
 
 function FollowersComponent(props) {
+
+
+    if (props.followers.login === '' && props.login!==undefined) {
+        props.fetchFollowersRequest(props.login)
+    }
 
     var followersArr = [];
 
@@ -30,11 +37,17 @@ function FollowersComponent(props) {
     );
 }
 
+const mapDispatchToProps = dispatch => bindActionCreators({
+    fetchFollowersRequest,
+}, dispatch);
+
+
 const getState = (state) => {
-    console.log(state);
+    
     return {
         followers: state.reduserFollowers,
+        login: state.reducerUser.login,
     };
 };
 
-export default connect(getState)(FollowersComponent);
+export default connect(getState, mapDispatchToProps)(FollowersComponent);

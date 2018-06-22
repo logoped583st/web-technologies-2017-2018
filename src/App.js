@@ -8,7 +8,6 @@ import RepositoriesComponent from './components/RepositoriesComponent';
 import FollowersComponent from './components/FollowersComponent';
 
 import configureStore from './reducers/Store'
-import StarsGrowReposComponent from './components/StarsGrowReposComponent';
 import TabStarsGrowReposComponent from './components/TabStarsGrowReposComponent';
 
 

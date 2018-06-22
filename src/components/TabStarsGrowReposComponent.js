@@ -1,11 +1,8 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { bindActionCreators } from 'redux';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import TextAreaComponent from './TextAreaComponent';
 import StarsGrowReposComponent from './StarsGrowReposComponent';
-import { fetchStarsReposRequest } from '../actions/actions'
-import { fetchGrowReposRequest } from '../actions/actions'
+
 
 class TabsStarsGrowReposComponent extends React.Component {
     constructor() {

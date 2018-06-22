@@ -2,7 +2,6 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { fetchStarsReposRequest } from '../actions/actions'
 import { fetchGrowReposRequest } from '../actions/actions'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import { connect } from 'react-redux';
 
@@ -38,9 +37,8 @@ class StarsGrowReposComponent extends React.Component {
 
         )
     }
-
-
 }
+
 const getState = (state) => {
     console.log(state)
     return {

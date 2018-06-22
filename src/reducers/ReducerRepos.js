@@ -1,7 +1,7 @@
 import * as constatnts from '../Constants'
 
 const initialStateRepos = {
-
+ login :''
 };
 
 
