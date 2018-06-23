@@ -39,6 +39,5 @@ describe('Organization component test', () => {
         const reducerOrgs = shallow(<OrganizationsComponent store={store}/>);
         expect(reducerOrgs.prop('avatar_url')).toBe(undefined);
         expect(reducerOrgs.prop('login')).toBe(undefined);
-        
     })
 });

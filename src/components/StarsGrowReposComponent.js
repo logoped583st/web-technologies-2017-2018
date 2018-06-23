@@ -23,7 +23,7 @@ class StarsGrowReposComponent extends React.Component {
     render() {
         return (
 
-            (this.props.repos.items !== undefined && this.props.repos.items.length !== 0) && <div className="REPS">
+            (this.props.repos!==undefined && this.props.repos.items !== undefined && this.props.repos.items.length !== 0) && <div className="REPS">
 
                 <h2>Repositories</h2>
                 {this.props.repos.items.map(function (item) {

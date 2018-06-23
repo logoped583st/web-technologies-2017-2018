@@ -21,19 +21,16 @@ class RepositoriesComponent extends React.Component {
     }
 
     languageChange(event) {
-        console.log("CHANGE LANGUAGE")
         this.setState({ language: event.target.value })
     }
 
     typeChange(event) {
-        console.log("CHANGETYPE")
         this.setState({ type: event.target.value })
     }
 
     render() {
         var repositoreidsArr = [];
         var languageMap = new Map();
-        console.log(this.state)
         for (const repos in this.props.repos) {
             if (this.props.repos.hasOwnProperty(repos)) {
                 repositoreidsArr.push(this.props.repos[repos])
@@ -48,17 +45,16 @@ class RepositoriesComponent extends React.Component {
         })
 
         var localState = this.state;
-        console.log(languageArr);
         return (
             (this.props.login !== '' && this.props.login !== undefined) && <div className="REPS">
 
-                <select className="Type" onChange={this.typeChange}>
-                    <option value="All_repos">All</option>
+                <select className="Type" onChange={this.typeChange} value={this.state.type}>
+                    <option className='All_repos' value="All_repos">All</option>
                     <option value="public">public</option>
                     <option value="private">private</option>
                 </select>
 
-                <select className="Language" onChange={this.languageChange}>
+                <select className="Language" onChange={this.languageChange} value={this.state.language}>
                     <option value="All_Language">All</option>
                     {languageArr.map(item => {
                         if (item !== null) {
@@ -89,24 +85,22 @@ class RepositoriesComponent extends React.Component {
                             }
                             break;
                         }
-                        default: {
+                        case "All_repos": {
                             if (localState.language === "All_Language" || item.language === localState.language){
                                 return (<div className="orgs_adds">
                                     <h2>{item.name}</h2>
                                     <h3> {item.html_url}   {item.language}</h3>
                                 </div>)
                             }
+                            break;
                         }
                     }
                 })}
-
-
             </div>
         );
     }
 }
 const getState = (state) => {
-    console.log(state);
     return {
         repos: state.reduserRepos,
         login: state.reducerUser.login
