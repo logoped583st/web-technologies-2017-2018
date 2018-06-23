@@ -16,23 +16,24 @@ class SearchComponent extends React.Component {
         };
         this.textChange = this.textChange.bind(this);
         this.search = this.search.bind(this);
-        this.enterPress = this.enterPress.bind(this);
         this.textChangeRepository = this.textChangeRepository.bind(this);
-        this.enterPressRepository = this.enterPressRepository.bind(this);
+        // this.enterPressRepository = this.enterPressRepository.bind(this);
+        // this.enterPress = this.enterPress.bind(this);
+
         this.searchRepository = this.searchRepository.bind(this);
     }
 
-    enterPress = (e) => {
-        if (e.key === 'Enter') {
-            this.search();
-        }
-    }
+    // enterPress = (event) => {
+    //     if (event.keyCode=== 13) {
+    //         this.search();
+    //     }
+    // }
 
-    enterPressRepository = (e) => {
-        if (e.key === 'Enter') {
-            this.searchRepository();
-        }
-    }
+    // enterPressRepository = (event) => {
+    //     if (event.keyCode === 13) {
+    //         this.searchRepository();
+    //     }
+    // }
 
     textChange(e) {
         this.setState({ text: e.target.value });

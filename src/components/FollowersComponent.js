@@ -6,33 +6,25 @@ import { bindActionCreators } from 'redux';
 
 function FollowersComponent(props) {
 
-
-    if (props.followers.login === '' && props.login!==undefined) {
+    if (props.login !== undefined && props.followers !== undefined && props.followers.login === '') {
         props.fetchFollowersRequest(props.login)
     }
 
     var followersArr = [];
-
     for (const follower in props.followers) {
-        if (props.followers.hasOwnProperty(follower)) {
-            followersArr.push(props.followers[follower])
-        }
+        followersArr.push(props.followers[follower])
     }
 
+
     return (
-        (followersArr.length !== 0) && <div className="REPS">
-
-
-            <h2>Organizations</h2>
-
+        (props.followers !== undefined && props.followers.login !== '') && <div className="REPS">
+            <h2>Followers</h2>
             {followersArr.map(function (item) {
-                return (<div className="orgs_adds">
+                return (<div>
                     <h3>{item.login}</h3>
                     <img src={item.avatar_url} alt={item.avatar_url} />
                 </div>)
             })}
-
-
         </div>
     );
 }
@@ -43,7 +35,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 
 
 const getState = (state) => {
-    
+
     return {
         followers: state.reduserFollowers,
         login: state.reducerUser.login,

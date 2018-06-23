@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from "react-redux";
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 function IconComponent(props) {
@@ -9,6 +8,4 @@ function IconComponent(props) {
     )
 }
 
-
-
-export default connect(null)(IconComponent);
+export default (IconComponent);

@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 class TextAreaComponent extends React.Component {
 
@@ -31,4 +30,4 @@ class TextAreaComponent extends React.Component {
 
 
 
-export default connect(null)(TextAreaComponent);
+export default (TextAreaComponent);

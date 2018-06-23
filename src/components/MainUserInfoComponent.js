@@ -9,7 +9,7 @@ function MainUserInfoComponent(props) {
     
             <div className="image_table">
                 <img src={props.image} alt={props.name} />
-                <TabsComponent className="Table" />
+                <TabsComponent className="Table" store={""} />
             </div>
             <h2>{props.name}</h2>
             <h3>{props.login}</h3>

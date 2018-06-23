@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from "react-redux";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import TextAreaComponent from './TextAreaComponent';
 
@@ -35,4 +34,6 @@ class TabsComponent extends React.Component {
 
 }
 
-export default connect(null)(TabsComponent);
+
+
+export default (TabsComponent);
