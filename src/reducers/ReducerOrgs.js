@@ -5,7 +5,7 @@ const initialStateOrgs = {
 };
 
 
-const reducerOrgs = (state , action) => {
+export const reducerOrgs = (state=initialStateOrgs , action) => {
 
     switch (action.type) {
         case constants.GET_ORGS_SUCCESS: {
@@ -13,11 +13,7 @@ const reducerOrgs = (state , action) => {
         }
   
         default: {
-            if (state !== undefined){
-                return state;
-            }else{
-                return initialStateOrgs;
-            }
+            return state
         }
     }
 };

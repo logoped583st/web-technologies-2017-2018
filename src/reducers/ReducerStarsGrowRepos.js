@@ -5,7 +5,7 @@ const initialStateStarsGrowRepos = {
 };
 
 
-const reducerStarsGrowRepos = (state, action) => {
+export const reducerStarsGrowRepos = (state = initialStateStarsGrowRepos, action) => {
     switch (action.type) {
         case constatnts.GET_STARS_REPOS_SUCCESS: {
             return Object.assign({}, state.reducerStarsGrowRepos, action.Repos);
@@ -13,14 +13,10 @@ const reducerStarsGrowRepos = (state, action) => {
         case constatnts.GET_GROW_REPOS_SUCCESS: {
             return Object.assign({}, state.reducerStarsGrowRepos, action.Repos);
         }
-        default: {
-            if (state !== undefined) {
-                return state;
-            } else {
-                return initialStateStarsGrowRepos;
-            }
-        }
+
     }
+    return state;
+
 };
 
 export default reducerStarsGrowRepos;

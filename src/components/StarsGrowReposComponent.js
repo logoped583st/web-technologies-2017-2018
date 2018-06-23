@@ -17,9 +17,6 @@ class StarsGrowReposComponent extends React.Component {
         }
     }
 
-
-
-
     render() {
         return (
 
@@ -39,7 +36,6 @@ class StarsGrowReposComponent extends React.Component {
 }
 
 const getState = (state) => {
-    console.log(state)
     return {
         repos: state.reducerStarsGrowRepos
     };

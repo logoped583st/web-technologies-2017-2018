@@ -19,6 +19,7 @@ class TabsStarsGrowReposComponent extends React.Component {
                     <Tab>Top Repositories</Tab>
                 </TabList>
 
+            
                 <TabPanel>
 
                     <StarsGrowReposComponent  request ={'GROW'}/>
@@ -36,4 +37,4 @@ class TabsStarsGrowReposComponent extends React.Component {
 }
 
 
-export default connect(null)(TabsStarsGrowReposComponent);
+export default (TabsStarsGrowReposComponent);

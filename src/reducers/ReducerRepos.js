@@ -5,17 +5,13 @@ const initialStateRepos = {
 };
 
 
-const reducerRepos = (state , action) => {
+export const reducerRepos = (state=initialStateRepos , action) => {
     switch (action.type) {
         case constatnts.GET_REPOS_SUCCESS: {
             return Object.assign({}, state.reducerRepos, action.Repos);
         }
         default: {
-            if (state !== undefined){
-                return state;
-            }else{
-                return initialStateRepos;
-            }
+            return initialStateRepos;      
         }
     }
 };
