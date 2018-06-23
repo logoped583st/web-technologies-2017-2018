@@ -10,7 +10,6 @@ class StarsGrowReposComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = { tabIndex: 0 };
-        console.log(props.request)
         if (props.request === 'TOP') {
             this.props.fetchStarsReposRequest();
         } else if (props.request === 'GROW') {
