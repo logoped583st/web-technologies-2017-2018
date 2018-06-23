@@ -8,13 +8,13 @@ class TextAreaComponent extends React.Component {
             text: "",
             number : props.number
         };
-        this.textChange = this.textChange.bind(this);
+       // this.textChange = this.textChange.bind(this);
     }
 
 
-    textChange(e) {
-        this.setState({ text: e.target.value })
-    }
+    // textChange(e) {
+    //     this.setState({ text: e.target.value })
+    // }
 
 
 

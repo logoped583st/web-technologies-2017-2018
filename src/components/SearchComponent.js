@@ -57,11 +57,11 @@ class SearchComponent extends React.Component {
             <div>
                 <div className='Search'>
                     <input id='inputText' type='text' onChange={this.textChange} placeholder="Username" onKeyDown={this.enterPress} />
-                    <button onClick={this.search}>Search User</button>
+                    <button  className='button'onClick={this.search}>Search User</button>
                 </div>
                 <div className='Search'>
                     <input id='inputText' type='text' onChange={this.textChangeRepository} placeholder="Repository Name" onKeyDown={this.enterPressRepository} />
-                    <button onClick={this.searchRepository}>Search Repository</button>
+                    <button className='button' onClick={this.searchRepository}>Search Repository</button>
                 </div>
             </div>
         );

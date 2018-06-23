@@ -269,7 +269,6 @@ exports[`MainUserInfoComponent component test MainUserInfoComponent component re
                         </button>
                         <textarea
                           className="textArea"
-                          onChange={[Function]}
                           type="text"
                           value=""
                         />
