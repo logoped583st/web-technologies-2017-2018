@@ -1,0 +1,83 @@
+@media (max-width: 720px) {
+    h1{
+        text-align: center;
+    }
+    h2{
+        text-align: center;
+    }
+    h3{
+        text-align: center;
+    }
+    .mainContent{
+        display: flex;
+        flex-direction: column;
+    }
+    .first{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+        margin: 0;
+        width: 80%;
+    }
+    .second{
+        display: flex;
+        align-self: center;
+        background-size: 80%;
+        width: 80%;
+    }
+    .fromBlog{
+        display: flex;
+        flex-direction: column;
+    }
+    .ImagesBlog{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex-wrap: inherit;
+        align-self: center;
+        padding: 0;
+        align-items: center;
+        width: 80%;
+    }
+    .BlogSize{
+        margin-top: 10px;
+    }
+    .footerContent{
+        padding: 0;
+    }
+    .botFooter{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .ImagesBlog1{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+    
+    .ImagesBlog2{
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    .navigationAtapt{
+        display: flex;
+        width: 100%;
+        height: 50px;
+        flex-direction: row;
+        justify-content: space-between;
+    
+        background-color: #000000;
+    }
+    .navigation{
+        display: none;
+    }
+    .paddingright{
+        padding: 0;
+    }
+}
