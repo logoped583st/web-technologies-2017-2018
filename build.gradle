@@ -1,26 +1,24 @@
 buildscript {
     ext.kotlin_version = '1.3.0'
     ext.ktor_version = '1.0.0-beta-3'
-    ext.appengine_version = '1.9.60'
-    ext.appengine_plugin_version = '1.3.4'
     repositories {
         mavenCentral()
+        maven { url "https://dl.bintray.com/kotlin/kotlin-eap" }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "com.google.cloud.tools:appengine-gradle-plugin:$appengine_plugin_version"
     }
 }
 
 
 apply plugin: 'kotlin'
-apply plugin: 'war'
-apply plugin: 'com.google.cloud.tools.appengine'
-
+apply plugin: 'application'
 
 sourceSets {
     main.kotlin.srcDirs = ['src/main/kotlin']
 }
+
+mainClassName = 'io.ktor.server.netty.EngineMain'
 
 
 
@@ -31,18 +29,17 @@ repositories {
 }
 
 
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     compile "io.ktor:ktor-server-netty:$ktor_version"
     compile "io.ktor:ktor-jackson:$ktor_version"
     compile "io.ktor:ktor-locations:$ktor_version"
+    compile "ch.qos.logback:logback-classic:1.2.1"
     compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.0"
-
-
-    providedCompile "com.google.appengine:appengine:$appengine_version"
 }
-
-
-
-task run(dependsOn: appengineRun)
