@@ -16,7 +16,7 @@ plugins {
 }
 
 heroku {
-    appName = "lab7-web"
+    appName = "lab-7web"
 }
 
 apply plugin: 'java'
@@ -24,6 +24,7 @@ apply plugin: 'kotlin'
 apply plugin: 'application'
 
 sourceCompatibility = 1.8
+
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
@@ -39,7 +40,6 @@ repositories {
     maven { url = "https://dl.bintray.com/kotlin/ktor" }
     maven { url = "https://dl.bintray.com/kotlin/exposed" }
 }
-
 
 
 dependencies {
@@ -58,4 +58,7 @@ dependencies {
     testCompile "org.junit.jupiter:junit-jupiter-api:5.2.0"
 }
 
-task stage(dependsOn: ['installDist'])
+
+task stage {
+    dependsOn installDist
+}
