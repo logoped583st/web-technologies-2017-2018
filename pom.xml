@@ -12,7 +12,7 @@
     <properties>
         <kotlin.version>1.3.0</kotlin.version>
         <junit.version>4.12</junit.version>
-        <main.class>Main</main.class>
+        <main.class>io.ktor.server.netty.DevelopmentEngine</main.class>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
