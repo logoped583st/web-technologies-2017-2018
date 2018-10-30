@@ -45,11 +45,13 @@ dependencies {
 }
 
 
-jar {
-    baseName 'herokuDeploy'
+task fatJar(type: Jar) {
     manifest {
-        attributes 'Main-Class': 'Main'
+        attributes 'Implementation-Title': 'Gradle Jar File Example',
+                'Implementation-Version': 3,
+                'Main-Class': 'io.ktor.server.netty.EngineMain'
     }
-
+    baseName = project.name + '-all'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
 }
