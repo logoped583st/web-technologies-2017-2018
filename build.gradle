@@ -43,3 +43,13 @@ dependencies {
     compile "ch.qos.logback:logback-classic:1.2.1"
     compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.0"
 }
+
+
+jar {
+    baseName 'herokuDeploy'
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
