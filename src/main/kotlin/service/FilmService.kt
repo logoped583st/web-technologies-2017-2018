@@ -34,7 +34,7 @@ fun getSortFilms(sort: Sort, films: List<Film>): List<Film> = when (sort.field) 
 
     "title" -> sort(sort.by, Film::title, films)
 
-    else -> throw Exception("eror arguments")
+    else -> throw Exception("Illegal arguments")
 }
 
 @Throws(Exception::class)
