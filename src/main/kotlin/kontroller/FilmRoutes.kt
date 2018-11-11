@@ -1,5 +1,6 @@
 package kontroller
 
+import JSON
 import io.ktor.application.call
 import io.ktor.http.HttpStatusCode
 import io.ktor.locations.KtorExperimentalLocationsAPI
@@ -9,19 +10,32 @@ import io.ktor.response.respond
 import io.ktor.routing.Route
 import io.ktor.routing.get
 import io.ktor.routing.route
-import service.*
+import service.getFilmWithId
+import service.getFilmWithName
+import service.getPagination
+import service.getSortFilms
 
-@Location("/films/{name}")
+@KtorExperimentalLocationsAPI
+@Location("/{name}")
 data class FilmName(val name: String)
 
-@Location("/films/id/{id}")
+@KtorExperimentalLocationsAPI
+@Location("/id/{id}")
 data class FilmId(val id: Int)
 
-@Location("")
-data class Pagination(val offset: Int, val limit: Int)
 
-@Location("/films/sort")
+@KtorExperimentalLocationsAPI
+@Location("/")
+data class Pagination(val offset: Int?, val limit: Int?)
+
+@KtorExperimentalLocationsAPI
+@Location("/")
 data class Sort(val field: String, val by: String)
+
+data class CustomError(val error: String)
+
+@Location("/")
+data class SortWithPagination(val pagination: Pagination, val sort: Sort)
 
 
 val statusOk = HttpStatusCode(200, "Ok")
@@ -30,44 +44,51 @@ val statusError = HttpStatusCode(405, "Wrong arguments")
 
 @KtorExperimentalLocationsAPI
 fun Route.films() {
-
-    get<FilmName> { filmName ->
-        call.respond(statusOk, getFilmWithName(filmName.name))
-    }
-
-    get<FilmId> { it ->
-        call.respond(statusOk, getFilmWithId(it.id))
-    }
-
-
     route("/films") {
-        get("/") {
+        get("{...}") {
             if (call.parameters.isEmpty()) {
-                call.respond(statusOk, getAllFilms())
-                return@get
-            }
-
-            if (!call.parameters["offset"].isNullOrEmpty() && !call.parameters["limit"].isNullOrEmpty()) {
-                try {
-                    call.respond(statusOk, getPagination(Pagination(call.parameters["offset"]!!.toInt(), call.parameters["limit"]!!.toInt())))
-                } catch (e: Exception) {
-                    call.respond(statusError, e.message.toString())
-                }
-                return@get
+                call.respond(statusOk, JSON.getFilms())
             } else {
-                call.respond(statusError, "Illegal args")
+                call.respond(statusError, CustomError("Wrong request arguments"))
             }
         }
-    }
 
-    get<Sort> { it ->
-        try {
-            call.respond(statusOk, getSortFilms(it))
-        } catch (e: Exception) {
-            call.respond(statusError, e.message.toString())
 
+        get<FilmName> { filmName ->
+            call.respond(statusOk, getFilmWithName(filmName.name))
         }
+
+        get<FilmId> { filmId ->
+            call.respond(statusOk, getFilmWithId(filmId.id))
+        }
+
+        get<Pagination> { filmPag ->
+            try {
+                call.respond(statusOk, getPagination(filmPag, JSON.getFilms()))
+            } catch (e: Exception) {
+                call.respond(statusError, CustomError("Wrong request arguments"))
+            }
+        }
+
+        get<Sort> { filmSort ->
+            try {
+                call.respond(statusOk, getSortFilms(filmSort, JSON.getFilms()))
+            } catch (e: Exception) {
+                call.respond(statusError, CustomError("Wrong request arguments"))
+            }
+        }
+
+        get<SortWithPagination> { filmSort ->
+            try {
+                var films = JSON.getFilms()
+                films = getPagination(filmSort.pagination, films)
+                films = getSortFilms(filmSort.sort, films)
+                call.respond(statusOk, films)
+            } catch (e: Exception) {
+                call.respond(statusError, CustomError("Wrong request arguments"))
+            }
+        }
+
     }
-
-
 }
+

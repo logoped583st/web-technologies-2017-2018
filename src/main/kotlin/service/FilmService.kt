@@ -3,7 +3,9 @@ package service
 import JSON
 import kontroller.Pagination
 import kontroller.Sort
+
 import models.Film
+import kotlin.reflect.KProperty1
 
 fun getFilmWithName(filmName: String) = JSON.getFilms().filter {
     it.title.toLowerCase().contains(filmName.toLowerCase())
@@ -13,55 +15,37 @@ fun getFilmWithId(id: Int): Film = JSON.getFilms().first {
     it.id == id
 }
 
-fun getAllFilms() = JSON.getFilms()
 
 @Throws(Exception::class)
-fun getPagination(pagination: Pagination): List<Film> = if (pagination.limit >= 0 && pagination.offset >= 0 && pagination.offset + pagination.limit <= JSON.getFilms().size) {
-    JSON.getFilms().subList(pagination.offset, pagination.offset + pagination.limit)
+fun getPagination(pagination: Pagination, films: List<Film>): List<Film> = if (pagination.limit!! >= 0
+        && pagination.offset!! >= 0 && pagination.offset + pagination.limit <= JSON.getFilms().size) {
+    films.subList(pagination.offset, pagination.offset + pagination.limit)
 } else {
-    throw Exception("Illegl arhuments")
+    throw Exception("Illegal arguments")
 }
 
 @Throws(Exception::class)
-fun getSortFilms(sort: Sort): List<Film> = when (sort.field) {
-    "id" -> sortId(sort.by)
+fun getSortFilms(sort: Sort, films: List<Film>): List<Film> = when (sort.field) {
+    "id" -> sort(sort.by, Film::id, films)
 
-    "vote_average" -> sortVoteAverage(sort.by)
+    "vote_average" -> sort(sort.by, Film::vote_average, films)
 
-    "original_langiage" -> originalLanguage(sort.by)
+    "original_language" -> sort(sort.by, Film::original_language, films)
 
-    "title" -> sortTitle(sort.by)
+    "title" -> sort(sort.by, Film::title, films)
 
-    else ->  throw Exception("eror arguments")
+    else -> throw Exception("eror arguments")
 }
 
+@Throws(Exception::class)
+fun <E : Comparable<E>> sort(by: String, kProperty1: KProperty1<Film, E>, films: List<Film>): List<Film> = when (by) {
 
+    "up" -> films.sortedBy(kProperty1)
 
-fun sortId(by: String): List<Film> = if (by == "up") {
-    JSON.getFilms().sortedWith(compareBy { it.id })
-} else {
-    JSON.getFilms().sortedWith(compareBy { it.id }).reversed()
+    "down" -> films.sortedBy(kProperty1).asReversed()
+
+    else -> throw Exception("Illegal arguments")
 }
 
-fun sortVoteAverage(by: String): List<Film> = if (by == "up") {
-    JSON.getFilms().sortedWith(compareBy { it.vote_average })
-} else {
-    JSON.getFilms().sortedWith(compareBy { it.vote_average }).reversed()
-}
-
-
-fun sortTitle(by: String): List<Film> =
-        if (by == "up") {
-            JSON.getFilms().sortedWith(compareBy { it.title })
-        } else {
-            JSON.getFilms().sortedWith(compareBy { it.title }).reversed()
-        }
-
-fun originalLanguage(by: String): List<Film> =
-        if (by == "up") {
-            JSON.getFilms().sortedWith(compareBy { it.original_language })
-        } else {
-            JSON.getFilms().sortedWith(compareBy { it.original_language }).reversed()
-        }
 
 

@@ -1,11 +1,15 @@
 import com.fasterxml.jackson.databind.SerializationFeature
 import io.ktor.application.Application
+import io.ktor.application.call
 import io.ktor.application.install
 import io.ktor.features.*
 import io.ktor.jackson.jackson
 import io.ktor.locations.Locations
+import io.ktor.response.respond
 import io.ktor.routing.Routing
+import kontroller.CustomError
 import kontroller.films
+import kontroller.statusError
 
 class Main {
 
@@ -23,6 +27,12 @@ class Main {
 
         install(CallLogging)
         install(Locations)
+        install(StatusPages) {
+            exception<NumberFormatException> { cause ->
+                call.respond(statusError,CustomError(cause.localizedMessage))
+            }
+        }
+
         install(Routing) {
             films()
         }
