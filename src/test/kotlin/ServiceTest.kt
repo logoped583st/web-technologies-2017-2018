@@ -57,86 +57,9 @@ class ServiceTest {
                 "2018-09-13")))
     }
 
-    @Test
-    fun testSortId() {
-        Assert.assertEquals(getSortFilms(Sort("id", "up"), JSON.getFilms())[0], Film(
-                9834,
-                11,
-                false,
-                8.2F,
-                "Star Wars",
-                31.629F,
-                "/btTdmkgIvOi0FFip1sPuZI2oQG6.jpg",
-                "en",
-                "Star Wars",
-                "/4iJfYYoQzZcONB9hNzg0J0wWyPH.jpg",
-                false,
-                "Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire.",
-                listOf(
-                        12,
-                        28,
-                        878
-                ),
-                "1977-05-25"
-        ))
-
-        Assert.assertEquals(getSortFilms(Sort("id", "down"), JSON.getFilms())[0], Film(
-                0,
-                551629,
-                false,
-                0F,
-                "Asih",
-                9.526F,
-                "/7nLltUcTH5IicANMrCsWAxCsT5n.jpg",
-                "id",
-                "Asih",
-                null,
-                false,
-                "Asih gone mad after she killed her own baby and commited suicide. Not far from there, there's this happy couple who just had a baby. But Asih is ready to terrorize them.",
-                listOf(
-                        27,
-                        18
-                ),
-                "2018-10-11"
-        ))
-
-    }
-
-    @Test(expected = java.lang.Exception::class)
-    fun testWrongSort() {
-        getSortFilms(Sort("fasd", "down"), JSON.getFilms())
-        getSortFilms(Sort("id", "fasd"), JSON.getFilms())
-    }
-
-    @Test(expected = java.lang.Exception::class)
-    fun testWrongSortBy() {
-        getSortFilms(Sort("id", "fasd"), JSON.getFilms())
-    }
 
 
-    @Test
-    fun testPagination() {
-        val pagFilms = getPagination(Pagination(10, 10), JSON.getFilms())
-        Assert.assertEquals(pagFilms[0], Film(1,
-                143417,
-                false,
-                2F,
-                "Blue Film: Estimation",
-                54.367F,
-                "/4B8GnbdCklT2hkDzvMPoRjfbYNt.jpg",
-                "ja",
-                "蒼いフィルム　品さだめ",
-                null,
-                false,
-                "The film depicts the plight of a female office worker whose boss introduces to the world of pornographic films.",
-                ArrayList<Int>(),
-                "1968-03-01"
-        ))
-        Assert.assertEquals(pagFilms.size, 10)
-    }
 
-    @Test(expected = java.lang.Exception::class)
-    fun testWrongPagination() {
-        getPagination(Pagination(10, -123), JSON.getFilms())
-    }
+
+
 }

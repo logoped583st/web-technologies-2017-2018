@@ -5,7 +5,9 @@ class Main {
 
     @RunWith(Suite::class)
     @Suite.SuiteClasses(
-            ServiceTest::class
+            ServiceTest::class,
+            ServiceTestPagination::class,
+            ServiceTestSort::class
     )
     class UnitTestsSuite
 }
