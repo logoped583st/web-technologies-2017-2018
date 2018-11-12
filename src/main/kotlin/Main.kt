@@ -10,6 +10,11 @@ import io.ktor.routing.Routing
 import kontroller.CustomError
 import kontroller.films
 import kontroller.statusError
+import models.Films
+import models.GenreIds
+import org.jetbrains.exposed.sql.SchemaUtils
+import org.jetbrains.exposed.sql.exists
+import org.jetbrains.exposed.sql.transactions.transaction
 
 
 fun Application.main() {
@@ -34,6 +39,14 @@ fun Application.main() {
 
     install(Routing) {
         films()
+    }
+
+
+    if(!Films.exists()){
+        SchemaUtils.create(Films, GenreIds)
+        transaction {
+
+        }
     }
 }
 
