@@ -7,7 +7,8 @@ class Main {
     @Suite.SuiteClasses(
             ServiceTest::class,
             ServiceTestPagination::class,
-            ServiceTestSort::class
+            ServiceTestSort::class,
+            KontrollerTest::class
     )
     class UnitTestsSuite
 }

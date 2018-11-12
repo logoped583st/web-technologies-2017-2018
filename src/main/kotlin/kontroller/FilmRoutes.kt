@@ -47,26 +47,26 @@ fun Route.films() {
     route("/films") {
         get("{...}") {
             if (call.parameters.isEmpty()) {
-                call.respond(statusOk, JSON.getFilms())
+                call.respond(HttpStatusCode.OK, JSON.getFilms())
             } else {
-                call.respond(statusError, CustomError("Wrong request arguments"))
+                call.respond(HttpStatusCode.MethodNotAllowed, CustomError("Wrong request arguments"))
             }
         }
 
 
         get<FilmName> { filmName ->
-            call.respond(statusOk, getFilmWithName(filmName.name))
+            call.respond(HttpStatusCode.OK, getFilmWithName(filmName.name))
         }
 
         get<FilmId> { filmId ->
-            call.respond(statusOk, getFilmWithId(filmId.id))
+            call.respond(HttpStatusCode.OK, getFilmWithId(filmId.id))
         }
 
         get<Pagination> { filmPag ->
             try {
                 call.respond(statusOk, getPagination(filmPag, JSON.getFilms()))
             } catch (e: Exception) {
-                call.respond(statusError, CustomError("Wrong request arguments"))
+                call.respond(HttpStatusCode.MethodNotAllowed, CustomError("Wrong request arguments"))
             }
         }
 
@@ -74,7 +74,7 @@ fun Route.films() {
             try {
                 call.respond(statusOk, getSortFilms(filmSort, JSON.getFilms()))
             } catch (e: Exception) {
-                call.respond(statusError, CustomError("Wrong request arguments"))
+                call.respond(HttpStatusCode.MethodNotAllowed, CustomError("Wrong request arguments"))
             }
         }
 
@@ -85,7 +85,7 @@ fun Route.films() {
                 films = getSortFilms(filmSort.sort, films)
                 call.respond(statusOk, films)
             } catch (e: Exception) {
-                call.respond(statusError, CustomError("Wrong request arguments"))
+                call.respond(HttpStatusCode.MethodNotAllowed, CustomError("Wrong request arguments"))
             }
         }
 

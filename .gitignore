@@ -6,3 +6,5 @@ target
 .gradle
 local.properties
 *.lock
+.out
+.build

@@ -11,31 +11,31 @@ import kontroller.CustomError
 import kontroller.films
 import kontroller.statusError
 
-class Main {
 
-    fun Application.main() {
-        install(Compression)
-        install(DefaultHeaders)
-        install(CORS) {
-            anyHost()
-        }
-        install(ContentNegotiation) {
-            jackson {
-                enable(SerializationFeature.INDENT_OUTPUT)
-            }
-        }
-
-        install(CallLogging)
-        install(Locations)
-        install(StatusPages) {
-            exception<NumberFormatException> { cause ->
-                call.respond(statusError,CustomError(cause.localizedMessage))
-            }
-        }
-
-        install(Routing) {
-            films()
+fun Application.main() {
+    install(Compression)
+    install(DefaultHeaders)
+    install(CORS) {
+        anyHost()
+    }
+    install(ContentNegotiation) {
+        jackson {
+            enable(SerializationFeature.INDENT_OUTPUT)
         }
     }
 
+    install(CallLogging)
+    install(Locations)
+    install(StatusPages) {
+        exception<NumberFormatException> { cause ->
+            call.respond(statusError, CustomError(cause.localizedMessage))
+        }
+    }
+
+    install(Routing) {
+        films()
+    }
 }
+
+
+

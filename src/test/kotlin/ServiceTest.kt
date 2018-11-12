@@ -1,12 +1,8 @@
-import kontroller.Pagination
-import kontroller.Sort
 import models.Film
 import org.junit.Assert
 import org.junit.Test
 import service.getFilmWithId
 import service.getFilmWithName
-import service.getPagination
-import service.getSortFilms
 
 class ServiceTest {
 
@@ -56,10 +52,6 @@ class ServiceTest {
                 ),
                 "2018-09-13")))
     }
-
-
-
-
 
 
 }
