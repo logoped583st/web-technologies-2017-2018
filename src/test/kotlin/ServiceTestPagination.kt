@@ -8,7 +8,7 @@ class ServiceTestPagination {
 
     @Test
     fun testPagination() {
-        val pagFilms = getPagination(Pagination(10, 10), JSON.getFilms())
+        val pagFilms = getPagination(Pagination(10, 10))
         Assert.assertEquals(pagFilms[0], Film(1,
                 143417,
                 false,
@@ -29,6 +29,6 @@ class ServiceTestPagination {
 
     @Test(expected = java.lang.Exception::class)
     fun testWrongPagination() {
-        getPagination(Pagination(10, -123), JSON.getFilms())
+        getPagination(Pagination(10, -123))
     }
 }

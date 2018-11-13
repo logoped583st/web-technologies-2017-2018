@@ -1,25 +1,28 @@
 package models
 
-import org.jetbrains.exposed.dao.IntIdTable
+import org.jetbrains.exposed.sql.Column
+import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.Table
+import org.jetbrains.exposed.sql.select
+import org.jetbrains.exposed.sql.transactions.transaction
 
 
 object Films : Table() {
-    val id = integer("id").primaryKey()
+    val id = integer("id").uniqueIndex().primaryKey()
     val video = bool("video")
     val vote_average = float("vote_average")
     val title = varchar("title", 255)
     val popularity = float("popularity")
-    val poster_path = varchar("poster_path", 255)
+    val vote_count = integer("vote_count")
+    val poster_path = varchar("poster_path", 255).nullable()
     val original_language = varchar("original_language", 255)
     val original_title = varchar("original_title", 255)
-    val backdrop_path = varchar("backdrop_path", 255)
+    val backdrop_path = varchar("backdrop_path", 255).nullable()
     val adult = bool("adult")
-    val overview = varchar("overview", 2000)
-    val genre_ids = reference("genre_ids", GenreIds)
-    val release_date = date("date")
+    val overview = varchar("overview", 2000).nullable()
+    val genre_ids: Column<Int> = reference("filmId", id)
+    val release_date = varchar("date", 255)
 }
-
 
 data class Film(val vote_count: Int,
                 val id: Int,
@@ -37,6 +40,33 @@ data class Film(val vote_count: Int,
                 val release_date: String?)
 
 
-object GenreIds : IntIdTable() {
-    val genre_ids: List<Int> = ArrayList()
+object GenreIds : Table() {
+    val filmId = integer("filmId")
+    val genre_id = integer("genre_id").nullable()
 }
+
+fun toGenreIds(id: Int): List<Int> = transaction {
+    val list: ArrayList<Int> = ArrayList()
+    GenreIds.select { GenreIds.filmId eq id }.map {
+        list.add(it[GenreIds.genre_id]!!)
+    }
+    return@transaction list
+}
+
+
+fun toFilm(row: ResultRow): Film = Film(vote_count = row[Films.vote_count],
+        id = row[Films.id],
+        video = row[Films.video],
+        vote_average = row[Films.vote_average],
+        title = row[Films.title],
+        popularity = row[Films.popularity],
+        poster_path = row[Films.poster_path],
+        original_language = row[Films.original_language],
+        original_title = row[Films.original_title],
+        backdrop_path = row[Films.backdrop_path],
+        adult = row[Films.adult],
+        overview = row[Films.overview],
+        release_date = row[Films.release_date],
+        genre_ids = toGenreIds(row[Films.genre_ids])
+)
+

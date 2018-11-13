@@ -1,6 +1,5 @@
 package kontroller
 
-import JSON
 import io.ktor.application.call
 import io.ktor.http.HttpStatusCode
 import io.ktor.locations.KtorExperimentalLocationsAPI
@@ -10,10 +9,8 @@ import io.ktor.response.respond
 import io.ktor.routing.Route
 import io.ktor.routing.get
 import io.ktor.routing.route
-import service.getFilmWithId
-import service.getFilmWithName
-import service.getPagination
-import service.getSortFilms
+import org.jetbrains.exposed.sql.Query
+import service.*
 
 @KtorExperimentalLocationsAPI
 @Location("/{name}")
@@ -47,7 +44,7 @@ fun Route.films() {
     route("/films") {
         get("{...}") {
             if (call.parameters.isEmpty()) {
-                call.respond(HttpStatusCode.OK, JSON.getFilms())
+                call.respond(HttpStatusCode.OK, getAllFilms())
             } else {
                 call.respond(HttpStatusCode.MethodNotAllowed, CustomError("Wrong request arguments"))
             }
@@ -64,7 +61,7 @@ fun Route.films() {
 
         get<Pagination> { filmPag ->
             try {
-                call.respond(statusOk, getPagination(filmPag, JSON.getFilms()))
+                call.respond(statusOk, toListFilm(getPagination(filmPag)))
             } catch (e: Exception) {
                 call.respond(HttpStatusCode.MethodNotAllowed, CustomError("Wrong request arguments"))
             }
@@ -72,7 +69,7 @@ fun Route.films() {
 
         get<Sort> { filmSort ->
             try {
-                call.respond(statusOk, getSortFilms(filmSort, JSON.getFilms()))
+                call.respond(statusOk, getSortFilms(filmSort))
             } catch (e: Exception) {
                 call.respond(HttpStatusCode.MethodNotAllowed, CustomError("Wrong request arguments"))
             }
@@ -80,10 +77,8 @@ fun Route.films() {
 
         get<SortWithPagination> { filmSort ->
             try {
-                var films = JSON.getFilms()
-                films = getPagination(filmSort.pagination, films)
-                films = getSortFilms(filmSort.sort, films)
-                call.respond(statusOk, films)
+                val query: Query = getPagination(filmSort.pagination)
+                call.respond(HttpStatusCode.OK, getSortFilms(filmSort.sort, query))
             } catch (e: Exception) {
                 call.respond(HttpStatusCode.MethodNotAllowed, CustomError("Wrong request arguments"))
             }

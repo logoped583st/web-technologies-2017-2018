@@ -8,7 +8,7 @@ class ServiceTestSort {
 
     @Test
     fun testSortId() {
-        Assert.assertEquals(getSortFilms(Sort("id", "up"), JSON.getFilms())[0], Film(
+        Assert.assertEquals(getSortFilms(Sort("id", "up"))[0], Film(
                 9834,
                 11,
                 false,
@@ -29,7 +29,7 @@ class ServiceTestSort {
                 "1977-05-25"
         ))
 
-        Assert.assertEquals(getSortFilms(Sort("id", "down"), JSON.getFilms())[0], Film(
+        Assert.assertEquals(getSortFilms(Sort("id", "down"))[0], Film(
                 0,
                 551629,
                 false,
@@ -54,7 +54,7 @@ class ServiceTestSort {
     @Test
     fun testSortVoteAverage() {
 
-        Assert.assertEquals(getSortFilms(Sort("vote_average", "up"), JSON.getFilms())[0], Film(
+        Assert.assertEquals(getSortFilms(Sort("vote_average", "up"))[0], Film(
                 0,
                 508830,
                 false,
@@ -81,7 +81,7 @@ class ServiceTestSort {
     @Test
     fun testSortTitle() {
 
-        Assert.assertEquals(getSortFilms(Sort("title", "up"), JSON.getFilms())[0], Film(
+        Assert.assertEquals(getSortFilms(Sort("title", "up"))[0], Film(
 
                 496,
                 455656,
@@ -105,12 +105,12 @@ class ServiceTestSort {
 
     @Test(expected = java.lang.Exception::class)
     fun testWrongSort() {
-        getSortFilms(Sort("fasd", "down"), JSON.getFilms())
-        getSortFilms(Sort("id", "fasd"), JSON.getFilms())
+        getSortFilms(Sort("fasd", "down"))
+        getSortFilms(Sort("id", "fasd"))
     }
 
     @Test(expected = java.lang.Exception::class)
     fun testWrongSortBy() {
-        getSortFilms(Sort("id", "fasd"), JSON.getFilms())
+        getSortFilms(Sort("id", "fasd"))
     }
 }
