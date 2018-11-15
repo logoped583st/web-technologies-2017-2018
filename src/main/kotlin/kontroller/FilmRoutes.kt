@@ -53,7 +53,7 @@ fun Route.films() {
         get<FilmName> { filmName ->
             call.respond(HttpStatusCode.OK, getFilmWithName(filmName.name))
         }
-//
+
         get<FilmId> { filmId ->
             try {
                 call.respond(HttpStatusCode.OK, getFilmWithId(filmId.id))
@@ -64,12 +64,12 @@ fun Route.films() {
 
         get<Pagination> { filmPag ->
             try {
-                call.respond(statusOk, getPagination(filmPag))
+                call.respond(statusOk, toListFilm(getPagination(filmPag)))
             } catch (e: Exception) {
                 call.respond(HttpStatusCode.MethodNotAllowed, CustomError("Wrong request arguments"))
             }
         }
-//
+
         get<Sort> { filmSort ->
             call.respond(statusOk, getSortFilms(filmSort))
         }
