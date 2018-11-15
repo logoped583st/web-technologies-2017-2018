@@ -4,78 +4,58 @@ import JSON
 import kontroller.Pagination
 import kontroller.Sort
 import models.Film
-import models.Films
-import models.toFilm
-import org.jetbrains.exposed.sql.Column
-import org.jetbrains.exposed.sql.Query
-import org.jetbrains.exposed.sql.select
-import org.jetbrains.exposed.sql.selectAll
-import org.jetbrains.exposed.sql.transactions.transaction
-import kotlin.reflect.KProperty0
+import org.litote.kmongo.*
 
-fun getFilmWithName(filmName: String): List<Film> = transaction {
-    return@transaction Films.select {
-        (Films.title eq filmName)
-    }.map { toFilm(it) }
-}
 
-fun getAllFilms(): List<Film> = transaction {
-    return@transaction getAllFilmsQuery().map { toFilm(it) }
-}
+val client = KMongo.createClient()
+val db = client.getDatabase("lab11")
+val collection = db.getCollection<Film>()
 
-fun getAllFilmsQuery(): Query = transaction {
-    return@transaction Films.selectAll()
-}
 
-fun getFilmWithId(id: Int): Film =
-        transaction {
-            return@transaction toFilm(Films.select {
-                (Films.id eq id)
-            }.first())
+fun getFilmWithName(filmName: String): List<Film> = collection.find(Film::title regex filmName).toList()
+
+
+fun getAllFilms(): List<Film> = collection.find().toList()
+
+@Throws(Exception::class)
+fun getFilmWithId(id: Int): Film = collection.findOne("{_id:$id}") ?: throw NullPointerException()
+
+
+@Throws(Exception::class)
+fun getPagination(pagination: Pagination): List<Film> =
+        if (pagination.limit!! >= 0
+                && pagination.offset!! >= 0 && pagination.offset + pagination.limit <= JSON.getFilms().size) {
+            collection.find().skip(pagination.offset).limit(pagination.limit).toList()
+
+        } else {
+            throw Exception("Illegal arguments")
         }
 
 
 @Throws(Exception::class)
-fun getPagination(pagination: Pagination, query: Query = getAllFilmsQuery()): Query = transaction {
-    if (pagination.limit!! >= 0
-            && pagination.offset!! >= 0 && pagination.offset + pagination.limit <= JSON.getFilms().size) {
-        return@transaction query.limit(pagination.limit, pagination.offset)
+fun getSortFilms(sort: Sort): List<Film> = when (sort.field) {
 
-    } else {
-        throw Exception("Illegal arguments")
-    }
-}
+    "id" -> sort(sort.by, "_id")
 
-fun toListFilm(query: Query): List<Film> =
-        transaction {
-            return@transaction query.map { toFilm(it) }
-        }
+    "vote_average" -> sort(sort.by, "vote_average")
 
-@Throws(Exception::class)
-fun getSortFilms(sort: Sort, query: Query = getAllFilmsQuery()): List<Film> = when (sort.field) {
+    "original_language" -> sort(sort.by, "original_language")
 
-    "id" -> sort(sort.by, Films::id, query)
-
-    "vote_average" -> sort(sort.by, Films::vote_average, query)
-
-    "original_language" -> sort(sort.by, Films::original_language, query)
-
-    "title" -> sort(sort.by, Films::title, query)
+    "title" -> sort(sort.by, "title")
 
     else -> throw Exception("Illegal arguments")
 }
 
 @Throws(Exception::class)
-fun <E : Comparable<E>> sort(by: String, kProperty: KProperty0<Column<E>>, query: Query): List<Film> = transaction {
-    when (by) {
+fun sort(by: String, field: String): List<Film> = when (by) {
 
-        "up" -> query.sortedBy { kProperty.get() }.map { toFilm(it) }
+    "up" -> collection.find().sort("{$field:1}").toList()
 
-        "down" -> query.sortedBy { kProperty.get() }.map { toFilm(it) }.asReversed()
+    "down" -> collection.find().sort("{$field:-1}").toList()
 
-        else -> throw Exception("Illegal arguments")
-    }
+    else -> throw Exception("Illegal arguments")
 }
+
 
 
 

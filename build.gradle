@@ -45,9 +45,8 @@ dependencies {
     compile "ch.qos.logback:logback-classic:1.2.1"
     compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.0"
 
-    compile "com.h2database:h2:$h2_version"
-    compile "org.jetbrains.exposed:exposed:$exposed_version"
-    compile 'com.zaxxer:HikariCP:3.2.0'
+    compile 'org.litote.kmongo:kmongo:3.9.0'
+    compile "io.reactivex.rxjava2:rxjava:2.2.3"
     
     testCompile "org.assertj:assertj-core:3.10.0"
     testCompile "io.rest-assured:rest-assured:3.1.0"

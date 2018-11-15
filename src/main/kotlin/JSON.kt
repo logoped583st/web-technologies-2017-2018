@@ -2,8 +2,6 @@ import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import models.Film
-import org.joda.time.DateTime
-import java.text.SimpleDateFormat
 
 object JSON {
 
