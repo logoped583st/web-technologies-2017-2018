@@ -7,6 +7,7 @@ import kontroller.Sort
 import kontroller.SortWithPagination
 import models.Film
 import org.litote.kmongo.*
+import kotlin.reflect.KProperty1
 
 
 val client = KMongo.createClient()
@@ -35,15 +36,15 @@ fun getPagination(pagination: Pagination): FindIterable<Film> =
 
 
 @Throws(Exception::class)
-fun getSortFilms(sort: Sort): FindIterable<Film> = when (sort.field) {
+fun getSortFilms(sort: Sort, films: FindIterable<Film> = collection.find()): FindIterable<Film> = when (sort.field) {
 
-    "id" -> sort(sort.by, "_id")
+    "id" -> sort(sort.by, Film::id, films)
 
-    "vote_average" -> sort(sort.by, "vote_average")
+    "vote_average" -> sort(sort.by, Film::vote_average, films)
 
-    "original_language" -> sort(sort.by, "original_language")
+    "original_language" -> sort(sort.by, Film::original_language, films)
 
-    "title" -> sort(sort.by, "title")
+    "title" -> sort(sort.by, Film::title, films)
 
     else -> throw Exception("Illegal arguments")
 }
@@ -51,18 +52,19 @@ fun getSortFilms(sort: Sort): FindIterable<Film> = when (sort.field) {
 fun toListFilm(result: FindIterable<Film>): List<Film> = result.toList()
 
 @Throws(Exception::class)
-fun sort(by: String, field: String): FindIterable<Film> = when (by) {
+fun <E : Comparable<E>> sort(by: String, field: KProperty1<Film, E>, films: FindIterable<Film> = collection.find()): FindIterable<Film> = when (by) {
 
-    "up" -> collection.find().sort("{$field:1}")
+    "up" -> films.ascendingSort(field)
 
-    "down" -> collection.find().sort("{$field:-1}")
+    "down" -> films.descendingSort(field)
 
     else -> throw Exception("Illegal arguments")
 }
 
 @Throws(Exception::class)
 fun getSortWithPagination(sortPag: SortWithPagination): List<Film> {
-
+    val partFilms: FindIterable<Film> = getPagination(sortPag.pagination)
+    return getSortFilms(sortPag.sort, partFilms).toList()
 }
 
 

@@ -62,6 +62,14 @@ fun Route.films() {
             }
         }
 
+        get<SortWithPagination> { filmSort ->
+            try {
+                call.respond(HttpStatusCode.OK, getSortWithPagination(filmSort))
+            } catch (e: Exception) {
+                call.respond(HttpStatusCode.MethodNotAllowed, CustomError("Wrong request arguments"))
+            }
+        }
+
         get<Pagination> { filmPag ->
             try {
                 call.respond(statusOk, toListFilm(getPagination(filmPag)))
@@ -71,19 +79,12 @@ fun Route.films() {
         }
 
         get<Sort> { filmSort ->
-            call.respond(statusOk, getSortFilms(filmSort))
+            try {
+                call.respond(statusOk, toListFilm(getSortFilms(filmSort)))
+            } catch (e: Exception) {
+                call.respond(HttpStatusCode.MethodNotAllowed, CustomError("Wrong request arguments"))
+            }
         }
-//
-//        get<SortWithPagination> { filmSort ->
-//            try {
-//                val query: Query = getPagination(filmSort.pagination)
-//                call.respond(HttpStatusCode.OK, getSortFilms(filmSort.sort, query))
-//            } catch (e: Exception) {
-//                call.respond(HttpStatusCode.MethodNotAllowed, CustomError("Wrong request arguments"))
-//            }
-//        }
-
-//    }
     }
 }
 

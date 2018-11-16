@@ -1,6 +1,9 @@
 package models
 
+import com.fasterxml.jackson.annotation.JsonProperty
+
 data class Film(val vote_count: Int,
+                @JsonProperty("id")
                 val id: Int,
                 val video: Boolean,
                 val vote_average: Float,
