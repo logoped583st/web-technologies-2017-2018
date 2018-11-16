@@ -3,7 +3,7 @@ package models
 import org.jetbrains.exposed.sql.Column
 import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.Table
-import org.jetbrains.exposed.sql.select
+import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 
 
@@ -20,7 +20,8 @@ object Films : Table() {
     val backdrop_path = varchar("backdrop_path", 255).nullable()
     val adult = bool("adult")
     val overview = varchar("overview", 2000).nullable()
-    val genre_ids: Column<Int> = reference("filmId", id)
+//    val genre_ids: Column<Int> = reference("filmId", id)
+    val genre_ids = (integer("filmId") references GenreIds.filmId)
     val release_date = varchar("date", 255)
 }
 
@@ -47,7 +48,8 @@ object GenreIds : Table() {
 
 fun toGenreIds(id: Int): List<Int> = transaction {
     val list: ArrayList<Int> = ArrayList()
-    GenreIds.select { GenreIds.filmId eq id }.map {
+    (Films innerJoin GenreIds).selectAll().map {
+        println(it[GenreIds.genre_id].toString())
         list.add(it[GenreIds.genre_id]!!)
     }
     return@transaction list
@@ -67,6 +69,6 @@ fun toFilm(row: ResultRow): Film = Film(vote_count = row[Films.vote_count],
         adult = row[Films.adult],
         overview = row[Films.overview],
         release_date = row[Films.release_date],
-        genre_ids = toGenreIds(row[Films.genre_ids])
+        genre_ids = (toGenreIds(row[Films.genre_ids]))
 )
 
