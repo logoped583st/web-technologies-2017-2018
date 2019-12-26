@@ -1,0 +1,205 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*/////////////////////////////////////////////////*/
+
+a {
+    color: #0000FF;
+    text-decoration: #0000FF underline;
+}
+
+b {
+    font-weight: bold;
+    text-decoration: #000000;
+}
+
+body {
+    background: #EDE7F6;
+    font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    font-size: 34px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+h3 {
+    font-size: 16px;
+    padding-top: 13px;
+}
+
+h4 {
+    padding-top: 20px;
+    font-size: 12px;
+    color: #AFA7C7;
+    word-spacing: 10px;
+}
+
+p {
+    margin-top: 22px;
+    font-size: 13px;
+    line-height: 1.5em;
+
+}
+
+footer {
+    max-width: 640px;
+    padding: 0 34px 0 34px;
+    text-align: center;
+    margin: auto;
+}
+
+select {
+    margin-top: 12px;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.blueBack {
+    background-color: #673AB7;
+    height: 278px;
+}
+
+.button {
+    margin-top: 34px;
+    height: 34px;
+    background-color: blue;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    border: none;
+}
+
+.bottomText {
+    color: #777777;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.default {
+    padding-top: 34px;
+}
+
+.whiteBack {
+    background-color: #FFFFFF;
+    box-shadow: 0 0 10px #777777;
+    margin: 0 auto 0 auto;
+    max-width: 640px;
+    height: auto;
+}
+
+.requestPassword {
+    padding-top: 8px
+}
+
+.shadow {
+    margin: -100px auto 0 auto;
+    width: 640px;
+    height: 8px;
+    background-color: #B388FF;
+}
+
+.star {
+    color: red;
+}
+
+.form {
+    padding: 34px 34px 0 34px;
+}
+
+.myAnswer {
+    padding-top: 30px;
+    border: none;
+    border-bottom: 1px solid #E0E0E0;
+    font: 400 16px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+    margin: auto;
+}
+
+.myAnswer1 {
+    width: 100%;
+    padding-top: 30px;
+    border: none;
+    border-bottom: 1px solid #E0E0E0;
+    font: 400 16px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+    margin: auto;
+}
+
+.other {
+    border: none;
+    border-bottom: 1px solid #E0E0E0;
+    font: 400 16px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+    margin: auto;
+}
+
+.selectFile {
+    color: #0000FF;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.inputDate {
+    margin-top: 12px;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+.years{
+    padding-top: 10px;
+}
